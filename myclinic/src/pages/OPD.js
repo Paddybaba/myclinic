@@ -96,6 +96,19 @@ const OPD = () => {
             />
           </div>
         </div>
+        <div class="form-group row mb-2">
+          <label for="doctor" class="col-sm-2 col-form-label">
+            Doctor
+          </label>
+          <div className="col-sm-3">
+            <select class="form-control" id="doctor">
+              <option>Dr Anup Padamwar</option>
+              <option>Dr Ravikiran Shinde</option>
+              <option>Dr Rachna Padamwar</option>
+              <option>Dr Apoorva Pawar</option>
+            </select>
+          </div>
+        </div>
 
         {/* <div class="form-group row">
           <div class="col-sm-2">Checkbox</div>
