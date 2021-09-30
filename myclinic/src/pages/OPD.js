@@ -6,20 +6,24 @@ const OPD = () => {
     patient_name: "",
     address: "",
     age: "",
+    phone: "",
     gender: "Male",
     date: "",
-    doctor: "",
-    fees: "",
+    doctor: "Dr Anup Padamwar",
+    fees: 200,
+    visit: "First Visit",
   };
   const [formData, updateFormdata] = useState(emptyForm);
-  console.log(formData);
   function handleChange(e) {
     updateFormdata({
       ...formData,
       [e.target.name]: e.target.value,
     });
   }
-
+  const onGenerate = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
   return (
     <section>
       <form>
@@ -64,6 +68,21 @@ const OPD = () => {
               id="age"
               placeholder="Age"
               name="age"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group row mb-2">
+          <label htmlFor="phone" className="col-sm-2 col-form-label">
+            Phone
+          </label>
+          <div className="col-sm-2">
+            <input
+              type="number"
+              className="form-control"
+              id="phone"
+              placeholder="Phone"
+              name="phone"
               onChange={handleChange}
             />
           </div>
@@ -148,21 +167,30 @@ const OPD = () => {
             </select>
           </div>
         </div>
-
-        {/* <div className="form-group row">
-          <div className="col-sm-2">Checkbox</div>
-          <div className="col-sm-10">
-            <div className="form-check">
-              <input className="form-check-input" type="checkbox" id="gridCheck1" />
-              <label className="form-check-label" for="gridCheck1">
-                Example checkbox
-              </label>
-            </div>
+        <div className="form-group row mb-2">
+          <label htmlFor="visit" className="col-sm-2 col-form-label">
+            Visit
+          </label>
+          <div className="col-sm-3">
+            <select
+              className="form-control"
+              id="visit"
+              name="visit"
+              onChange={handleChange}
+            >
+              <option>First visit</option>
+              <option>Follow up</option>
+            </select>
           </div>
-        </div> */}
+        </div>
+
         <div className="form-group row">
           <div className="col-sm-4 mt-4">
-            <button type="submit" className="btn btn-primary">
+            <button
+              onClick={onGenerate}
+              type="submit"
+              className="btn btn-primary"
+            >
               Generate Ticket
             </button>
           </div>
