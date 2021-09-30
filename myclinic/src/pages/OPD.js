@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+
 const OPD = () => {
   const emptyForm = {
     patient_name: "",
@@ -10,7 +11,7 @@ const OPD = () => {
     patient_gender: "Male",
     date: "",
     consulting_doctor: "Dr Anup Padamwar",
-    patient_fees: 200,
+    patient_fee: 200,
     patient_visit: "First Visit",
   };
   const [formData, updateFormdata] = useState(emptyForm);
@@ -23,39 +24,24 @@ const OPD = () => {
   }
   const onGenerate = async (e) => {
     e.preventDefault();
-    // const {
-    //   patient_name,
-    //   patient_address,
-    //   patient_age,
-    //   patient_phone,
-    //   patient_gender,
-    //   consulting_doctor,
-    //   patient_fees,
-    //   patient_visit,
-    // } = formData;
-    const response = await fetch("http://localhost:3030/patientregistration", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      // body: JSON.stringify({
-      //   patient_name,
-      //   patient_address,
-      //   patient_age,
-      //   patient_phone,
-      //   patient_gender,
-      //   consulting_doctor,
-      //   patient_fees,
-      //   patient_visit,
-      // }),
-      body: JSON.stringify(formData),
-    });
-    // const response = await axios.post(
-    //   "localhost:3030/patientregistration",
-    //   formData
-    // );
-    const data = response.json;
-    console.log(data);
+    //Using fetch
+    // const response = await fetch("http://localhost:3030/patientregistration", {
+    //   method: "POST",
+    //   origin: "cors",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // });
+
+    //Using axios
+
+    const response = await axios.post(
+      "http://localhost:3030/patientregistration",
+      formData
+    );
+    const data = response.data;
+    window.alert(`${data.data.patient_name} saved successfully !!`);
   };
   return (
     <section>
@@ -175,9 +161,9 @@ const OPD = () => {
             <input
               type="number"
               className="form-control"
-              id="consult-fee"
-              defaultValue="200"
+              id="fee"
               name="patient_fee"
+              defaultValue="200"
               onChange={handleChange}
             />
           </div>
