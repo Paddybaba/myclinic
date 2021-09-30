@@ -1,28 +1,61 @@
 import React from "react";
 import { useState } from "react";
-
+import axios from "axios";
 const OPD = () => {
   const emptyForm = {
     patient_name: "",
-    address: "",
-    age: "",
-    phone: "",
-    gender: "Male",
+    patient_address: "",
+    patient_age: "",
+    patient_phone: "",
+    patient_gender: "Male",
     date: "",
-    doctor: "Dr Anup Padamwar",
-    fees: 200,
-    visit: "First Visit",
+    consulting_doctor: "Dr Anup Padamwar",
+    patient_fees: 200,
+    patient_visit: "First Visit",
   };
   const [formData, updateFormdata] = useState(emptyForm);
+
   function handleChange(e) {
     updateFormdata({
       ...formData,
       [e.target.name]: e.target.value,
     });
   }
-  const onGenerate = (e) => {
+  const onGenerate = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    // const {
+    //   patient_name,
+    //   patient_address,
+    //   patient_age,
+    //   patient_phone,
+    //   patient_gender,
+    //   consulting_doctor,
+    //   patient_fees,
+    //   patient_visit,
+    // } = formData;
+    const response = await fetch("http://localhost:3030/patientregistration", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      // body: JSON.stringify({
+      //   patient_name,
+      //   patient_address,
+      //   patient_age,
+      //   patient_phone,
+      //   patient_gender,
+      //   consulting_doctor,
+      //   patient_fees,
+      //   patient_visit,
+      // }),
+      body: JSON.stringify(formData),
+    });
+    // const response = await axios.post(
+    //   "localhost:3030/patientregistration",
+    //   formData
+    // );
+    const data = response.json;
+    console.log(data);
   };
   return (
     <section>
@@ -52,7 +85,7 @@ const OPD = () => {
               className="form-control"
               id="address"
               placeholder="Address"
-              name="address"
+              name="patient_address"
               onChange={handleChange}
             />
           </div>
@@ -67,7 +100,7 @@ const OPD = () => {
               className="form-control"
               id="age"
               placeholder="Age"
-              name="age"
+              name="patient_age"
               onChange={handleChange}
             />
           </div>
@@ -82,7 +115,7 @@ const OPD = () => {
               className="form-control"
               id="phone"
               placeholder="Phone"
-              name="phone"
+              name="patient_phone"
               onChange={handleChange}
             />
           </div>
@@ -95,7 +128,7 @@ const OPD = () => {
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="gender"
+                  name="patient_gender"
                   id="male"
                   value="Male"
                   onChange={handleChange}
@@ -108,7 +141,7 @@ const OPD = () => {
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="gender"
+                  name="patient_gender"
                   id="female"
                   value="Female"
                   onChange={handleChange}
@@ -144,7 +177,7 @@ const OPD = () => {
               className="form-control"
               id="consult-fee"
               defaultValue="200"
-              name="consult-fee"
+              name="patient_fee"
               onChange={handleChange}
             />
           </div>
@@ -157,7 +190,7 @@ const OPD = () => {
             <select
               className="form-control"
               id="doctor"
-              name="doctor"
+              name="consulting_doctor"
               onChange={handleChange}
             >
               <option>Dr Anup Padamwar</option>
@@ -175,7 +208,7 @@ const OPD = () => {
             <select
               className="form-control"
               id="visit"
-              name="visit"
+              name="patient_visit"
               onChange={handleChange}
             >
               <option>First visit</option>
