@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
 
 // REGISTERING PATIENTS /////////////////
 router.post("/patientregistration", async (req, res) => {
+  console.log(req.body);
   const {
     patient_name,
     patient_addrress,
@@ -38,7 +39,9 @@ router.post("/patientregistration", async (req, res) => {
   const saved = patient.save();
   try {
     if (saved) {
-      res.status(200).json({ message: "Patient details saved succesfully" });
+      res
+        .status(200)
+        .json({ message: "Patient details saved succesfully", data: patient });
     } else {
       res
         .status(500)

@@ -24,7 +24,6 @@ const patientSchema = new mongoose.Schema({
   },
   patient_phone: {
     type: Number,
-    required: true,
   },
   consulting_doctor: {
     type: String,
