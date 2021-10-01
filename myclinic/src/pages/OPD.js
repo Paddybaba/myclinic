@@ -24,18 +24,6 @@ const OPD = () => {
   }
   const onGenerate = async (e) => {
     e.preventDefault();
-    //Using fetch
-    // const response = await fetch("http://localhost:3030/patientregistration", {
-    //   method: "POST",
-    //   origin: "cors",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData),
-    // });
-
-    //Using axios
-
     const response = await axios.post(
       "http://localhost:3030/patientregistration",
       formData
@@ -43,8 +31,12 @@ const OPD = () => {
     const data = response.data;
     window.alert(`${data.data.patient_name} saved successfully !!`);
   };
+
   return (
     <section>
+      <div className="row">
+        <h1>Patient Registration</h1>
+      </div>
       <form>
         <div className="form-group row mb-2">
           <label htmlFor="patient-name" className="col-sm-2 col-form-label">
