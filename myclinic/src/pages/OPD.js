@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import PrintPatient from "../components/PrintPatient";
+// import PrintPatient from "../components/PrintPatient";
+import Printable from "../components/Printable";
+// import PatientModal from "../components/PatientModal";
 
 const OPD = () => {
   const emptyForm = {
@@ -214,8 +216,9 @@ const OPD = () => {
                 </button>
               </div>
             </div>
-            <PrintPatient />
+            <Printable formData={formData} />
           </form>
+          /
         </div>
       </div>
     </section>

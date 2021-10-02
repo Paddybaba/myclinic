@@ -44,3 +44,6 @@
 /* .form-control {
   width: auto !important;
 } */
+.hidden {
+  display: none;
+}

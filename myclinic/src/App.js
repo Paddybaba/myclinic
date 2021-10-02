@@ -6,6 +6,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import { Switch, Route, Redirect } from "react-router";
 import Home from "./pages/Home";
 import OPD from "./pages/OPD";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/opd" component={OPD} />
+        <Route exact path="/about" component={About} />
         <Redirect to="/" />
       </Switch>
     </>
