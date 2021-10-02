@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import PrintPatient from "../components/PrintPatient";
 
 const OPD = () => {
   const emptyForm = {
@@ -22,6 +23,7 @@ const OPD = () => {
       [e.target.name]: e.target.value,
     });
   }
+
   const onGenerate = async (e) => {
     e.preventDefault();
     const response = await axios.post(
@@ -29,7 +31,9 @@ const OPD = () => {
       formData
     );
     const data = response.data;
+
     window.alert(`${data.data.patient_name} saved successfully !!`);
+    updateFormdata(emptyForm);
   };
 
   return (
@@ -210,6 +214,7 @@ const OPD = () => {
                 </button>
               </div>
             </div>
+            <PrintPatient />
           </form>
         </div>
       </div>
