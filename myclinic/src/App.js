@@ -7,6 +7,8 @@ import { Switch, Route, Redirect } from "react-router";
 import Home from "./pages/Home";
 import OPD from "./pages/OPD";
 import About from "./pages/About";
+import Admin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/opd" component={OPD} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/admin" component={Admin} />
+        <Route exact path="/admindashboard" component={AdminDashboard} />
         <Redirect to="/" />
       </Switch>
     </>

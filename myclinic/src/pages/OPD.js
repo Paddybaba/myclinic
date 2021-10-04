@@ -43,9 +43,12 @@ const OPD = () => {
       <div className="row">
         <div className="col-10 mx-auto">
           <div className="row">
-            <h2 className="col-12 text-center mx-auto mt-3 mb-3">
+            <h2 className="col-10 text-center mx-auto mt-3 mb-3">
               Patient Registration
             </h2>
+            <a className="col-2 d-flex align-items-center home-link" href="/">
+              Home
+            </a>
           </div>
           <form>
             <div className="form-group row mb-2">
@@ -206,19 +209,20 @@ const OPD = () => {
             </div>
 
             <div className="form-group row">
-              <div className="col-sm-4 mt-4">
+              <div className="col-sm-6  d-flex justify-content-center mt-2">
                 <button
                   onClick={onGenerate}
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-secondary"
                 >
-                  Generate Ticket
+                  Save Patient
                 </button>
               </div>
+              <div className="col-sm-6  mt-2">
+                <Printable formData={formData} />
+              </div>
             </div>
-            <Printable formData={formData} />
           </form>
-          /
         </div>
       </div>
     </section>

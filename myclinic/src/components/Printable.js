@@ -1,23 +1,35 @@
 import printJS from "print-js";
-import React from "react";
+import React, { useEffect } from "react";
+import Receipt from "./Receipt";
 
 const Printable = ({ formData }) => {
   const { patient_name, patient_address, patient_age } = formData;
+  var divContent;
+  useEffect(() => {
+    divContent = document.getElementById("forPrint").innerHTML;
+  }, []);
 
-  const onPrint = (e) => {
-    e.preventDefault();
-    printJS({
-      printable: "forPrint",
-      type: "html",
-      targetStyles: ["*"],
-    });
+  const letsPrint = (e) => {
+    var backup = document.body.innerHTML;
+    divContent = document.getElementById("forPrint").innerHTML;
+    document.body.innerHTML = divContent;
+    window.print();
+    document.body.innerHTML = backup;
   };
+
   return (
-    <div>
+    <div className=" d-flex justify-content-center">
       <div className="hidden">
-        <div id="forPrint">Whatever you like to print</div>
+        <div id="forPrint">
+          <Receipt patientData={formData} />
+        </div>
       </div>
-      <button onClick={onPrint}>Print</button>
+      <button
+        className="btn btn-secondary"
+        onClick={() => letsPrint("forPrint")}
+      >
+        Print Receipt
+      </button>
     </div>
   );
 };
