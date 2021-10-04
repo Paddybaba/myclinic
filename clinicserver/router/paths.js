@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Patient = require("../database/models/patientSchema");
+const adminHandler = require("./Controllers/adminLogin");
 
 router.get("/", (req, res) => {
   res.send("Hello from from my server router");
@@ -50,6 +51,11 @@ router.post("/patientregistration", async (req, res) => {
   } catch {
     res.json({ error: "Some error occurred" });
   }
+});
+
+// ADMIN AUTHENTICATION///////////////
+router.get("/adminLogin", (req, res) => {
+  adminHandler.adminHandler(req, res);
 });
 
 module.exports = router;
