@@ -1,5 +1,5 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 const AdminDashboard = () => {
   return (
     <>
@@ -24,14 +24,16 @@ const AdminDashboard = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-10 mx-auto box">
+          <div className="col-10 mx-auto">
             <div className="row">
-              <div className="col-6 box"></div>
-              <div className="col-6 box"></div>
+              <NavLink to="/opd" className="col-5 box box-1">
+                <div>Register New Patient</div>
+              </NavLink>
+              <div className="col-5 box box-2">Statistics</div>
             </div>
-            <div className="row box">
-              <div className="col-6 box"></div>
-              <div className="col-6 box"></div>
+            <div className="row ">
+              <div className="col-5 box box-3">Inventory</div>
+              <div className="col-5 box box-4">Blank</div>
             </div>
           </div>
         </div>

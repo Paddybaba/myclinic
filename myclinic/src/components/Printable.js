@@ -2,7 +2,7 @@ import printJS from "print-js";
 import React, { useEffect } from "react";
 import Receipt from "./Receipt";
 
-const Printable = ({ formData }) => {
+const Printable = ({ formData, updateFormdata }) => {
   const { patient_name, patient_address, patient_age } = formData;
   var divContent;
   useEffect(() => {

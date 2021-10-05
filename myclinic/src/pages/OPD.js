@@ -1,9 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-// import PrintPatient from "../components/PrintPatient";
 import Printable from "../components/Printable";
-// import PatientModal from "../components/PatientModal";
 
 const OPD = () => {
   const emptyForm = {
@@ -26,7 +24,7 @@ const OPD = () => {
     });
   }
 
-  const onGenerate = async (e) => {
+  const onSavePatient = async (e) => {
     e.preventDefault();
     const response = await axios.post(
       "http://localhost:3030/patientregistration",
@@ -35,7 +33,7 @@ const OPD = () => {
     const data = response.data;
 
     window.alert(`${data.data.patient_name} saved successfully !!`);
-    updateFormdata(emptyForm);
+    console.log("Lets clear the form");
   };
 
   return (
@@ -209,17 +207,21 @@ const OPD = () => {
             </div>
 
             <div className="form-group row">
-              <div className="col-sm-6  d-flex justify-content-center mt-2">
-                <button
-                  onClick={onGenerate}
-                  type="submit"
-                  className="btn btn-secondary"
-                >
+              <div className="col-4  d-flex justify-content-center mt-2">
+                <button onClick={onSavePatient} className="btn btn-secondary">
                   Save Patient
                 </button>
               </div>
-              <div className="col-sm-6  mt-2">
-                <Printable formData={formData} />
+              <div className="col-4  mt-2">
+                <Printable
+                  formData={formData}
+                  updateFormdata={updateFormdata}
+                />
+              </div>
+              <div className="col-4  d-flex justify-content-center mt-2">
+                <button type="reset" className="btn btn-secondary">
+                  Reset
+                </button>
               </div>
             </div>
           </form>

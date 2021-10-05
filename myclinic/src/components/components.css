@@ -34,7 +34,7 @@
 
 /* ADMIN LOGIN */
 .admin-title {
-  font-size: 150%;
+  font-size: 200%;
   font-weight: bold;
   text-align: center;
   margin-top: 30px;
@@ -58,14 +58,45 @@
 /* ADMIN DASHBOARD  */
 
 .box {
-  border: 1px solid red;
-  /* width: auto; */
+  margin: 10px;
+  display: flex;
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 3vw;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
   height: 200px;
+  transition: 400ms;
 }
+
 .welcome-doctor {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   font-size: 18px;
   color: #2f2f2f;
+}
+.box-1 {
+  border-radius: 5px;
+  background-color: #845ec2;
+}
+.box-2 {
+  border-radius: 5px;
+  background-color: #4b4453;
+}
+.box-3 {
+  border-radius: 5px;
+  background-color: #b0a8b9;
+}
+.box-4 {
+  border-radius: 5px;
+  background-color: #ff8066;
+}
+
+/* ////MEDIA QUERIES  */
+@media screen and (max-width: 480px) {
+  .box {
+    height: 80px;
+  }
 }
