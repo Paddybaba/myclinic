@@ -54,7 +54,7 @@ router.post("/patientregistration", async (req, res) => {
 });
 
 // ADMIN AUTHENTICATION///////////////
-router.get("/adminLogin", (req, res) => {
+router.post("/adminLogin", (req, res) => {
   adminHandler.adminHandler(req, res);
 });
 
