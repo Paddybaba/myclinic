@@ -32,7 +32,12 @@ const AdminLogin = () => {
     if (response) {
       if (response.data.code === "success") {
         alert(`Welcome ${response.data.user}`);
-        history.push("/admindashboard");
+        history.push({
+          pathname: "/admindashboard",
+          state: {
+            data: response.data,
+          },
+        });
       } else if (response.data.code === "err") {
         alert("Invalid Credentials");
       }

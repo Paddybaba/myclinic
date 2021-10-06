@@ -9,7 +9,7 @@ import OPD from "./pages/OPD";
 import About from "./pages/About";
 import Admin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
-
+import Statistics from "./pages/Statistics";
 function App() {
   return (
     <>
@@ -19,6 +19,8 @@ function App() {
         <Route exact path="/about" component={About} />
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/admindashboard" component={AdminDashboard} />
+        <Route exact path="/statistics" component={Statistics} />
+
         <Redirect to="/" />
       </Switch>
     </>
