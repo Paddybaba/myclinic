@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-// import "./Login.css";
+import axios from "axios";
 
 const AdminLogin = () => {
   const history = useHistory();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return username.length > 0 && password.length > 0;
   }
 
   function handleSubmit(event) {
@@ -18,6 +18,26 @@ const AdminLogin = () => {
     history.push("/admindashboard");
   }
 
+  const onLoginClick = async (e) => {
+    e.preventDefault();
+    const response = await axios
+      .post("http://localhost:3030/adminLogin", {
+        username,
+        password,
+      })
+      .catch((err) => {
+        alert(err.response.data.error);
+      });
+
+    if (response) {
+      if (response.data.code === "success") {
+        alert(`Welcome ${response.data.user}`);
+        history.push("/admindashboard");
+      } else if (response.data.code === "err") {
+        alert("Invalid Credentials");
+      }
+    }
+  };
   return (
     <div className="Login row">
       <div className="col-10 mx-auto">
@@ -32,13 +52,13 @@ const AdminLogin = () => {
         </div>
         <div className="admin-title">Administrator Login</div>
         <Form>
-          <Form.Group size="lg" controlId="email">
+          <Form.Group size="lg" controlId="username">
             <Form.Label>Admin Identity</Form.Label>
             <Form.Control
               autoFocus
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </Form.Group>
           <Form.Group className="mt-4" size="lg" controlId="password">
@@ -50,11 +70,10 @@ const AdminLogin = () => {
             />
           </Form.Group>
           <Button
-            block
             className="mt-4"
             type="submit"
             disabled={!validateForm()}
-            onClick={handleSubmit}
+            onClick={onLoginClick}
           >
             Login
           </Button>

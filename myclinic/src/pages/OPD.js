@@ -55,6 +55,7 @@ const OPD = () => {
               </label>
               <div className="col-sm-8">
                 <input
+                  required
                   type="text"
                   className="form-control"
                   id="patient_name"
@@ -177,6 +178,7 @@ const OPD = () => {
               </label>
               <div className="col-sm-8">
                 <select
+                  required
                   className="form-control"
                   id="doctor"
                   name="consulting_doctor"
@@ -196,6 +198,7 @@ const OPD = () => {
               <div className="col-sm-8">
                 <select
                   className="form-control"
+                  required
                   id="visit"
                   name="patient_visit"
                   onChange={handleChange}
@@ -208,7 +211,11 @@ const OPD = () => {
 
             <div className="form-group row">
               <div className="col-4  d-flex justify-content-center mt-2">
-                <button onClick={onSavePatient} className="btn btn-secondary">
+                <button
+                  type="submit"
+                  onClick={onSavePatient}
+                  className="btn btn-secondary"
+                >
                   Save Patient
                 </button>
               </div>
