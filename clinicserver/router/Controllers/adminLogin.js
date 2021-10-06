@@ -20,7 +20,7 @@ async function adminHandler(req, res) {
           res.json({
             message: `${userData.username} signin successfully`,
             code: "success",
-            user: "Dr Anup Padamwar",
+            user: userData.user,
           });
         }
       }
