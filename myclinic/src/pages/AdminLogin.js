@@ -26,10 +26,15 @@ const AdminLogin = () => {
         password,
       })
       .catch((err) => {
-        alert(err.response.data.error);
+        if (!err.response) {
+          alert("Could not connect to the server");
+        } else {
+          alert(err.response.data.error);
+        }
       });
-
-    if (response) {
+    if (!response) {
+      return;
+    } else {
       if (response.data.code === "success") {
         alert(`Welcome ${response.data.user}`);
         history.push({

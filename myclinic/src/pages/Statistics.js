@@ -1,4 +1,5 @@
 import React from "react";
+import PatientList from "../components/PatientList";
 
 const Statistics = () => {
   return (
@@ -7,6 +8,11 @@ const Statistics = () => {
         <div className="row">
           <div className="col-10 mx-auto">
             <div>Stats Page</div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-10 mx-auto">
+            <PatientList />
           </div>
         </div>
       </div>
