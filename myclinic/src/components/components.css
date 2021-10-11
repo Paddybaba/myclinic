@@ -95,9 +95,15 @@
   background-color: #ff8066;
 }
 
+/* PATIENT LIST  */
+
 /* ////MEDIA QUERIES  */
 @media screen and (max-width: 480px) {
   .box {
     height: 80px;
+  }
+  th,
+  td {
+    font-size: 50%;
   }
 }

@@ -6,12 +6,7 @@ const Statistics = () => {
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-10 mx-auto">
-            <div>Stats Page</div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-10 mx-auto">
+          <div className="col-12 mx-auto">
             <PatientList />
           </div>
         </div>
