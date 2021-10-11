@@ -7,7 +7,7 @@ const Statistics = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-10 mx-auto">
-            <div>Stats Page</div>
+            <div className="col-12 text-center fs-2">Statistics</div>
           </div>
         </div>
         <div className="row">
