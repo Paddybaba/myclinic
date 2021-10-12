@@ -17,9 +17,9 @@ const PatientList = () => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div id="patient-list" className="container-fluid tab-content">
         <div className="row">
-          <div className="col-10 mx-auto">
+          <div className="col-12 mx-auto">
             <div className="fs-2 text-center">List of Patients</div>
             {
               <table className="table">
@@ -34,7 +34,7 @@ const PatientList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {fullData.map((patient, index) => {
+                  {fullData.reverse().map((patient, index) => {
                     return (
                       <tr key={index}>
                         <th scope="row">{index + 1}</th>

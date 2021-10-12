@@ -1,5 +1,7 @@
 import React from "react";
-import PatientList from "../components/PatientList";
+import PatientList from "../components/tabContents/PatientList";
+import StatsTab from "../components/tabContents/StatsTab";
+
 import Toprow from "../components/Toprow";
 const Statistics = () => {
   return (
@@ -8,12 +10,12 @@ const Statistics = () => {
         <div className="row">
           <div className="col-12 mx-auto">
             <Toprow />
-            <div className="col-12 text-center fs-2">Statistics</div>
+            {/* <div className="col-12 text-center fs-2">Statistics</div> */}
           </div>
         </div>
         <div className="row">
-          <div className="col-10 mx-auto">
-            <PatientList />
+          <div className="col-12 mx-auto">
+            <StatsTab />
           </div>
         </div>
       </div>
