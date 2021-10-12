@@ -13,11 +13,6 @@ const AdminLogin = () => {
     return username.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    history.push("/admindashboard");
-  }
-
   const onLoginClick = async (e) => {
     e.preventDefault();
     const response = await axios
@@ -36,7 +31,6 @@ const AdminLogin = () => {
       return;
     } else {
       if (response.data.code === "success") {
-        alert(`Welcome ${response.data.user}`);
         history.push({
           pathname: "/admindashboard",
           state: {

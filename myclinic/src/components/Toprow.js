@@ -14,9 +14,10 @@ const Toprow = () => {
         <Navbar.Brand href="/">Sri Sai Clinic</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav className="ms-auto my-links">
             <NavLink to="/opd">New Patient</NavLink>
-            <NavLink to="/">Back</NavLink>
+            <NavLink to="/admindashboard">Dashboard</NavLink>
+            <NavLink to="/">Home</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

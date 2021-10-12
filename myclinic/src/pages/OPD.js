@@ -207,6 +207,7 @@ const OPD = () => {
                     onChange={handleChange}
                   >
                     <option>Dr Anup Padamwar</option>
+                    <option>Dr Ritesh Meghare</option>
                     <option>Dr Ravikiran Shinde</option>
                     <option>Dr Rachna Padamwar</option>
                     <option>Dr Apoorva Pawar</option>

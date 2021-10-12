@@ -94,6 +94,25 @@
   border-radius: 5px;
   background-color: #ff8066;
 }
+/* TOP ROW /////////////////////////////////// */
+.my-links {
+  text-align: center;
+}
+.my-links a {
+  padding: 0 10px;
+  font-size: 110%;
+  text-decoration: none;
+  color: #2f2f2f;
+  border-bottom: 1px solid transparent;
+
+  transition: 500ms;
+}
+.my-links a:hover {
+  font-size: 110%;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
 
 /* PATIENT LIST  */
 .tabcontent {

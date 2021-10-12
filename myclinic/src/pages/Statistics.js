@@ -1,5 +1,4 @@
 import React from "react";
-import PatientList from "../components/tabContents/PatientList";
 import StatsTab from "../components/tabContents/StatsTab";
 
 import Toprow from "../components/Toprow";
