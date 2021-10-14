@@ -1,9 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../components/components.css";
-const AdminDashboard = (props) => {
-  const { user } = props.location.state.data;
-  console.log(user);
+import { useSelector } from "react-redux";
+const AdminDashboard = () => {
+  // const { user } = props.location.state.data;
+  // console.log(user);
+  const myState = useSelector((state) => state.myReducer);
   return (
     <>
       <div className="container-fluid">
@@ -20,7 +22,7 @@ const AdminDashboard = (props) => {
                 </a>
               </div>
               <div className="col-9 welcome-doctor">
-                <strong>{user}</strong>
+                <strong>{myState.state.user}</strong>
               </div>
               <div className="admin-title">Administrator Dashboard</div>
             </div>
