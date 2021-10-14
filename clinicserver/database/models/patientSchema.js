@@ -29,6 +29,11 @@ const patientSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  consult_date: {
+    type: Date,
+    required: true,
+    default: Date.now(),
+  },
 });
 
 const Patient = mongoose.model("Patient", patientSchema);
