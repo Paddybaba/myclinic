@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -36,9 +36,6 @@ const AdminLogin = () => {
         dispatch(userLogin(response.data.user));
         history.push({
           pathname: "/admindashboard",
-          // state: {
-          //   data: response.data,
-          // },
         });
       } else if (response.data.code === "err") {
         alert("Invalid Credentials");

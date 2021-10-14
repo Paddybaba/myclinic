@@ -1,7 +1,7 @@
 const initialState = {
   user: {
+    user: "",
     username: "",
-    user: "Dr Anup Padamwar",
   },
   changeUser: { change: false, working: true },
 };

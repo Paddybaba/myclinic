@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import "../components/components.css";
 import { useSelector } from "react-redux";
 const AdminDashboard = () => {
-  // const { user } = props.location.state.data;
-  // console.log(user);
   const myState = useSelector((state) => state.myReducer);
   return (
     <>
