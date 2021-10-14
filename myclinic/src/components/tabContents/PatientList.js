@@ -1,12 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const PatientList = () => {
   const [fullData, setData] = useState([]);
+  const myState = useSelector((state) => state.myReducer);
 
   useEffect(() => {
     const getPatientData = async () => {
-      const response = await axios.post("http://localhost:3030/getpatients");
+      const response = await axios.post("http://localhost:3030/getmypatients", {
+        myState,
+      });
       const data = await response.data;
       setData(data);
       console.log(data);

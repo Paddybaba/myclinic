@@ -3,11 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-// import PrintPatient from "./components/PrintPatient";
+import store from "./red/store";
+import { Provider } from "react-redux";
+
+// store.subscribe(() => console.log(store.getState()));
 ReactDOM.render(
   <BrowserRouter>
-    <App />
-    {/* <PrintPatient /> */}
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );
