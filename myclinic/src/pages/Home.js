@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import MainCarousel from "../components/MainCarousel";
-import DepartmentX from "../components/DepartmentX";
+import Labels from "../components/Labels";
 
 const Home = () => {
   return (
@@ -13,12 +13,10 @@ const Home = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6 mx-auto">
-            <MainCarousel />
+          <div className="col-12 mx-auto carousel-background">
+            <MainCarousel></MainCarousel>
           </div>
-          <div className="col-sm-6 mx-auto sample">
-            <DepartmentX />
-          </div>
+          <Labels />
         </div>
       </div>
     </>

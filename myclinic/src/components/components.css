@@ -33,48 +33,32 @@
 }
 .sample {
   border: 1px solid red;
-  height: 400px;
+  /* height: 400px; */
 }
 .sample2 {
   border-radius: 10%;
   background-color: royalblue;
-  height: 400px;
-  width: 400px;
 }
 .border-rounded {
   border-radius: 15px;
 }
-/* DEPARTMENT X /////////// */
-
-.triangle-right {
-  width: 0;
-  height: 0;
-  border-top: 50px solid transparent;
-  border-left: 100px solid red;
-  border-bottom: 50px solid transparent;
+.carousel-background {
+  width: 100%;
+  margin-left: -10%;
+  margin-right: -10%;
+  margin-top: -25%;
+  left: 0;
+  z-index: -10;
+  overflow: hidden;
 }
-
-.triangle-up {
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 100px solid red;
-}
-.triangle-down {
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-top: 100px solid red;
-}
-
-.triangle-left {
-  width: 0;
-  height: 0;
-  border-top: 50px solid transparent;
-  border-right: 100px solid red;
-  border-bottom: 50px solid transparent;
+/* LABELS /////////// */
+.flying-labels {
+  position: absolute;
+  top: 100px;
+  left: 10vw;
+  border: tomato 2px solid;
+  height: 200px;
+  width: 80vw;
 }
 /* ADMIN LOGIN */
 .admin-title {
@@ -174,7 +158,8 @@
   td {
     font-size: 50%;
   }
-}
-.small-tab {
-  font-size: 90%;
+  .flying-labels {
+    top: 80px;
+    height: 100px;
+  }
 }
