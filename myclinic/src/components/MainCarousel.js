@@ -11,7 +11,7 @@ const MainCarousel = () => {
   return (
     <>
       <div className="">
-        <Carousel fade interval={10000} controls={false}>
+        <Carousel fade interval={10000} controls={false} indicators={false}>
           {slides.map((item, index) => {
             return (
               <Carousel.Item key={index}>

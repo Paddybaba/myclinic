@@ -54,11 +54,11 @@
 /* LABELS /////////// */
 .flying-labels {
   position: absolute;
-  top: 100px;
-  left: 10vw;
-  border: tomato 2px solid;
+  top: 200px;
+  left: 4vw;
+  /* border: tomato 2px solid; */
   height: 200px;
-  width: 80vw;
+  width: 90vw;
 }
 /* ADMIN LOGIN */
 .admin-title {
@@ -159,7 +159,44 @@
     font-size: 50%;
   }
   .flying-labels {
-    top: 80px;
+    top: 140px;
     height: 100px;
+  }
+}
+
+/* LABELS  /////////////// */
+.label1 {
+  font-size: 4vw;
+  text-transform: uppercase;
+  color: aliceblue;
+  font-weight: 500;
+}
+.label2 {
+  margin-left: 20%;
+  font-size: 5vw;
+  text-transform: uppercase;
+  color: aliceblue;
+  font-weight: 500;
+}
+.move-left {
+  animation: fly-left 6s ease-in-out;
+}
+.move-right {
+  animation: ease-in-out 6s fly-right;
+}
+@keyframes fly-left {
+  0% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes fly-right {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0%);
   }
 }
