@@ -152,12 +152,35 @@
 
 /* DOCTOR CARD ////////////////// */
 .card1 {
-  width: 250px;
-  height: 300px;
+  width: 240px;
+  height: 280px;
   display: flex;
   position: relative;
   border: 1px solid red;
-  margin: 0 20px;
+  border-radius: 5px;
+  margin: 0 10px;
+  /* align-items: center;
+  flex-direction: column; */
+}
+.doc-img {
+  width: 100%;
+}
+.doc-img img {
+  width: 100%;
+}
+.doc-name {
+  margin-top: -10px;
+  font-size: 1em;
+  line-height: 16px;
+  font-weight: bold;
+}
+.doc-qual {
+  margin-top: -8px;
+  font-size: 0.8em;
+}
+.doc-additional {
+  margin-top: -14px;
+  font-size: 0.7em;
 }
 /* ////MEDIA QUERIES  */
 @media screen and (max-width: 480px) {
@@ -171,6 +194,11 @@
   .flying-labels {
     top: 140px;
     height: 100px;
+  }
+  .card1 {
+    width: 240px;
+    height: 280px;
+    margin: 0 5px;
   }
 }
 
