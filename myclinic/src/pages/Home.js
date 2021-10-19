@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import MainCarousel from "../components/MainCarousel";
 import Labels from "../components/Labels";
 
+import OurDoctors from "../components/doctors/OurDoctors";
+
 const Home = () => {
   return (
     <>
@@ -17,6 +19,11 @@ const Home = () => {
             <MainCarousel></MainCarousel>
           </div>
           <Labels />
+        </div>
+        <div className="row">
+          <div className="col-10 mx-auto">
+            <OurDoctors />
+          </div>
         </div>
       </div>
     </>
