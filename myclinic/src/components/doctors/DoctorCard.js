@@ -7,7 +7,9 @@ const DoctorCard = ({ doctor }) => {
   return (
     <>
       <div className="card card1 mx-auto">
-        <img src={doctor.photo} className="doc-img" alt="..." />
+        <div className="doc-img">
+          <img src={doctor.photo} alt="..." />
+        </div>
         <div className="card-body">
           <h5 className="card-title doc-name">{doctor.name}</h5>
           <p className="doc-qual">{doctor.qual}</p>

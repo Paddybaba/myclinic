@@ -163,7 +163,20 @@
   flex-direction: column; */
 }
 .doc-img {
+  height: 100%;
   width: 100%;
+
+  position: relative;
+}
+.doc-img img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .doc-name {
   margin-top: -10px;
@@ -178,6 +191,7 @@
 .doc-additional {
   margin-top: -14px;
   font-size: 0.7em;
+  line-height: 12px;
 }
 /* ////MEDIA QUERIES  */
 @media screen and (max-width: 980px) {
@@ -206,6 +220,18 @@
   .flying-labels {
     top: 140px;
     height: 100px;
+  }
+  .card1 {
+    font-size: 90%;
+    width: 280px;
+    height: 130px;
+    flex-direction: row;
+  }
+  .doc-img {
+    width: 45%;
+  }
+  .doc-qual {
+    font-size: 0.9em;
   }
 }
 
