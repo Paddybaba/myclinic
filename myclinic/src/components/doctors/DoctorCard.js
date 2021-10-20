@@ -6,8 +6,8 @@ const DoctorCard = ({ doctor }) => {
   }
   return (
     <>
-      <div className="card card1" style={{ width: "18rem" }}>
-        <img src={doctor.photo} className="card-img-top" alt="..." />
+      <div className="card card1 mx-auto">
+        <img src={doctor.photo} className="doc-img" alt="..." />
         <div className="card-body">
           <h5 className="card-title doc-name">{doctor.name}</h5>
           <p className="doc-qual">{doctor.qual}</p>

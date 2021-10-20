@@ -29,15 +29,15 @@ const OurDoctors = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-12 mx-auto d-flex">
+            <div className="col-10 mx-auto ">
               <div className="row">
-                <div className="col-sm-4">
+                <div className="col-sm-4 mx-auto">
                   <DoctorCard doctor={anup} />
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-4 mx-auto">
                   <DoctorCard doctor={rachna} />
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-4 mx-auto">
                   <DoctorCard doctor={ravi} />
                 </div>
               </div>
