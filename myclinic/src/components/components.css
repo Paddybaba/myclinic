@@ -278,6 +278,7 @@
   display: inline-block;
   width: 240px;
   text-align: center;
+  margin-bottom: 100px;
 }
 
 .img-container {
@@ -307,32 +308,43 @@
   background: #c8c2c2;
   height: 250px;
   width: 200px;
+  transition: all 400ms ease;
 }
 
 .text-container {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   padding: 120px 20px 20px 20px;
   border-radius: 20px;
+  height: 250px;
   background: #fff;
   margin: -120px 0px 0px 0px;
-  line-height: 19px;
-  font-size: 14px;
+  /* line-height: 19px;
+  font-size: 14px; */
+  transition: all 400ms ease;
 }
 
 .a-box h3 {
   margin: 20px 0px 10px 0px;
   color: #04bcff;
   font-size: 18px;
+  transition: all 400ms ease-in;
 }
-.text-container2 {
-  display: none;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  padding: 120px 20px 20px 20px;
-  border-radius: 20px;
-  background: #fff;
-  margin: -120px 0px 0px 0px;
-  line-height: 19px;
-  font-size: 14px;
+.a-box h4 {
+  transition: all 400ms ease-in;
+  color: black;
+  font-size: 15px;
+}
+.a-box h5 {
+  transition: ease-in all 500ms;
+  color: transparent;
+  font-size: 13px;
+}
+.a-box p {
+  transition: ease-in all 500ms;
+  color: transparent;
+  font-size: 10px;
+  line-height: 11px;
+  text-align: justify;
 }
 @media screen and (max-width: 768px) {
   .a-box {
@@ -352,19 +364,29 @@
     font-size: 12px;
   }
 }
-.a-box:hover > .text-container2 h3 {
-  margin-top: -50px;
-  transition: all 400ms ease-in;
+
+.a-box:hover > .img-container {
+  transform: scale(0.5) translateY(-50px);
 }
 .a-box:hover > .text-container {
-  display: none;
+  background-color: rgb(64, 75, 224);
+  height: 250px;
 }
-.a-box:hover > .text-container2 {
-  display: block;
+.a-box:hover > .text-container h3 {
+  color: white;
+  transform: translateY(-100px);
+  text-decoration: underline;
 }
-.a-box:hover > .img-container {
-  transform: scale(0.5);
+.a-box:hover > .text-container h4 {
+  color: white;
+  transform: translateY(-100px);
 }
-.abox:hover > .img-container img {
-  transform: scale(0.5);
+.a-box:hover > .text-container h5 {
+  color: white;
+  transform: translateY(-100px);
+}
+.a-box:hover > .text-container p {
+  color: white;
+  transform: translateY(-100px);
+  font-size: 10px;
 }

@@ -13,14 +13,11 @@ const DocCard2 = ({ doctor }) => {
                 </div>
               </div>
             </div>
-            <div className="text-container2">
-              <h3>{doctor.name}</h3>
-              <div>{doctor.qual}</div>
-              <div>{doctor.add_qual}</div>
-            </div>
             <div className="text-container">
               <h3>{doctor.name}</h3>
-              <div className="fw-bold">{doctor.qual}</div>
+              <h4 className="">{doctor.qual}</h4>
+              <h5>{doctor.add_qual}</h5>
+              <p>{doctor.extra}</p>
             </div>
           </div>
         </div>

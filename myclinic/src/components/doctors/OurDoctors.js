@@ -7,6 +7,8 @@ const OurDoctors = () => {
     name: "Dr Anup Padamwar",
     qual: "MBBS, MS Orthopaedics",
     add_qual: "Fellowship Joint Replacement and Trauma Surgery",
+    extra:
+      "Dr Anup has done his fellowship in Joint Replacement and Trauma surgery under renowned Dr N S Laud and Dr Harish Bhende in Mumbai. He has also worked as Senior Resident in Medanta Medicity,Gurgaon. After finishing his trainig he has been working as consultant in Dhamtari Chritian Hospital and Gupta Hospital since past 10 years. ",
   };
   const rachna = {
     photo: "https://live.staticflickr.com/65535/51610090606_13735b7fcc_s.jpg",
