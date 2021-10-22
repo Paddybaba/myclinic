@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import MainCarousel from "../components/MainCarousel";
 import Labels from "../components/Labels";
-
+import Departments from "./Departments";
 import OurDoctors from "../components/doctors/OurDoctors";
 
 const Home = () => {
@@ -19,6 +19,11 @@ const Home = () => {
             <MainCarousel></MainCarousel>
           </div>
           <Labels />
+        </div>
+        <div className="row gx-0">
+          <div className="col-12 mx-auto">
+            <Departments />
+          </div>
         </div>
         <div className="row gx-0">
           <div className="col-12 mx-auto">
