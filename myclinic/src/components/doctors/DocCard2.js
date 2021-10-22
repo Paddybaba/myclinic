@@ -13,7 +13,7 @@ const DocCard2 = ({ doctor }) => {
                 </div>
               </div>
             </div>
-            <div className="text-container">
+            <div className="text-container gradient-1">
               <h3>{doctor.name}</h3>
               <h4 className="">{doctor.qual}</h4>
               <h5>{doctor.add_qual}</h5>

@@ -35,7 +35,7 @@ const Navigationbar = () => {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/">Contact</Nav.Link>
+            <Nav.Link href="/contact">Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
