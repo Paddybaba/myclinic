@@ -16,7 +16,7 @@ const Contact = () => {
                 <path
                   fill="#fff"
                   fill-opacity="1"
-                  d="M0,64L40,106.7C80,149,160,235,240,234.7C320,235,400,149,480,101.3C560,53,640,43,720,37.3C800,32,880,32,960,58.7C1040,85,1120,139,1200,149.3C1280,160,1360,128,1400,112L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+                  d="M0,320L288,288L576,160L864,288L1152,288L1440,128L1440,320L1152,320L864,320L576,320L288,320L0,320Z"
                 ></path>
               </svg>
             </div>
@@ -25,7 +25,7 @@ const Contact = () => {
                 <div className="row">
                   <div className="col-sm-6 ">
                     <div className="d-flex flex-row align-items-start mb-4">
-                      <Image src={saibaba} className="logo" fluid />
+                      {/* <Image src={saibaba} className="logo" fluid /> */}
                       <h3 className="fs-1">Shri Sai Clinic</h3>
                     </div>
                     <h5>Near Laxminiwas Chowk, Gokulpur, Dhamtari</h5>
@@ -35,8 +35,16 @@ const Contact = () => {
                     <h5>Website : www.shrisaiclinic.com</h5>
                     <h5>email : shrisaiclinic@gmail.com</h5>
                   </div>
-                  <div className="col-sm-6 sample d-flex align-items-center">
-                    Location Map Here
+                  <div className="col-sm-6 map-container">
+                    <h3>Directions</h3>
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d1757.0019191562503!2d81.55055296787522!3d20.689018109926415!3m2!1i1024!2i768!4f13.1!4m6!3e2!4m0!4m3!3m2!1d20.688551099999998!2d81.55211109999999!5e1!3m2!1sen!2sin!4v1634974820292!5m2!1sen!2sin"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowfullscreen=""
+                      loading="lazy"
+                    ></iframe>
                   </div>
                 </div>
               </div>
