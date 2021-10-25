@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/components.css";
+import "../components/cssFiles/components.css";
 const Receipt = ({ patientData }) => {
   const {
     patient_name,

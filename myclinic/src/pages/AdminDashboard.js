@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../components/components.css";
+import "../components/cssFiles/components.css";
 import { useSelector } from "react-redux";
 const AdminDashboard = () => {
   const myState = useSelector((state) => state.myReducer);
