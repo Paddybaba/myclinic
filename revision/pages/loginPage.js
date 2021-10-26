@@ -14,7 +14,7 @@ const loginPage = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    history.push("/admindashboard");
+    console.log(email);
   }
 
   return (
@@ -45,7 +45,7 @@ const loginPage = () => {
             />
           </Form.Group>
           <Button
-            block
+            block="true"
             className="mt-4"
             type="submit"
             disabled={!validateForm()}
