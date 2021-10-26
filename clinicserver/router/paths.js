@@ -28,4 +28,5 @@ router.post("/getpatients", (req, res) => {
 router.post("/getmypatients", (req, res) => {
   myPatientsHandler.getMyPatientsHandler(req, res);
 });
+
 module.exports = router;
