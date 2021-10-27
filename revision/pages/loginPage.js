@@ -3,6 +3,7 @@ import Head from "next/head";
 import Sample from "../src/components/Sample";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 const loginPage = () => {
   const [email, setEmail] = useState("");
@@ -12,9 +13,25 @@ const loginPage = () => {
     return email.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     console.log(email);
+    try {
+      const resposne = await axios.post("http://localhost:8080/login", {
+        username: email,
+        password: password,
+      });
+      const data = await resposne.data;
+      if (resposne.status === 400 || !data) {
+        window.alert("Invalid Credentials !!!");
+      } else {
+        console.log(data);
+        alert("Login Successful");
+      }
+    } catch (err) {
+      alert("Invalid credentials !!!");
+      console.log(err.message);
+    }
   }
 
   return (
