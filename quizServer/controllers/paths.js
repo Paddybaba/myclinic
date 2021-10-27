@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const studentLoginHandler = require("./loginController");
+const jwt = require("jsonwebtoken");
 
 router.get("/", (req, res) => {
   res.send("Hello i am listening for questions");

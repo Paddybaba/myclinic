@@ -1,5 +1,6 @@
 const Student = require("../database/models/studentSchema");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 async function loginHandler(req, res) {
   const { username, password } = req.body;
@@ -19,8 +20,9 @@ async function loginHandler(req, res) {
         } else {
           res.json({
             message: `${userData.username} signin successfully`,
-            code: "success",
-            user: { user: userData.user, username: userData.username },
+            code: "successful",
+            token: "empty",
+            // user: { user: userData.user, username: userData.username },
           });
         }
       }
@@ -29,6 +31,11 @@ async function loginHandler(req, res) {
     console.log(err.message);
   }
 }
+
+const createJWT = async (username) => {
+  const token = await jwt.sign(username, "mynameislakhan");
+};
+
 module.exports = {
   loginHandler: loginHandler,
 };
