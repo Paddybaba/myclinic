@@ -4,10 +4,13 @@ import Sample from "../src/components/Sample";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { userLogin } from "../red/actions";
 
 const loginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -22,11 +25,13 @@ const loginPage = () => {
         password: password,
       });
       const data = await resposne.data;
+      const user = await data.username;
       if (resposne.status === 400 || !data) {
-        window.alert("Invalid Credentials !!!");
+        window.alert("Invalid Credentials 1 !!!");
       } else {
         console.log(data);
         alert("Login Successful");
+        dispatch(userLogin(user));
       }
     } catch (err) {
       alert("Invalid credentials !!!");
