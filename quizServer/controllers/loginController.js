@@ -15,6 +15,12 @@ async function loginHandler(req, res) {
         res.status(400).json({ error: "Invalid username", code: "err" });
       } else {
         const passwordMatch = await bcrypt.compare(password, userData.password);
+        const token = await userData.generateToken();
+        console.log(token);
+        res.cookie("token", token, {
+          expires: new Date(Date.now + 1200000),
+          httpOnly: true,
+        });
         if (!passwordMatch) {
           res.status(400).json({ error: "Invalid password", code: "err" });
         } else {
