@@ -13,7 +13,7 @@ const loginPage = () => {
   const [password, setPassword] = useState("");
   const [state, setState] = useState();
   store.subscribe(() => {
-    setState(store.getState().myReducer.state);
+    setState(store.getState());
   });
   console.log(state);
   const dispatch = useDispatch();

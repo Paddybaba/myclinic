@@ -1,4 +1,4 @@
-const initalState = {
+const initialState = {
   user: "",
   questions: {
     total: "",
@@ -9,20 +9,22 @@ const initalState = {
     incorrect: [],
   },
 };
-
-const myReducer = (state = initalState, action) => {
+function myReducer(state = initialState, action) {
   switch (action.type) {
     case "USER_LOGIN": {
-      console.log(action.payload);
-      return { ...state, user: action.payload };
+      return {
+        ...state,
+        user: action.payload,
+        questions: { ...state.questions, total: 50 },
+      };
     }
     case "USER_LOGOUT": {
     }
     case "SUBMIT_ANSWER": {
     }
     default:
-      return { state };
+      return { ...state };
   }
-};
+}
 
 export default myReducer;
