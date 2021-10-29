@@ -6,10 +6,16 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../red/actions";
+import store from "../red/store";
 
 const loginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [state, setState] = useState();
+  store.subscribe(() => {
+    setState(store.getState().myReducer.state);
+  });
+  console.log(state);
   const dispatch = useDispatch();
 
   function validateForm() {
@@ -25,11 +31,11 @@ const loginPage = () => {
         password: password,
       });
       const data = await resposne.data;
-      const user = await data.username;
+      const user = await data.user;
       if (resposne.status === 400 || !data) {
         window.alert("Invalid Credentials 1 !!!");
       } else {
-        console.log(data);
+        console.log(user);
         alert("Login Successful");
         dispatch(userLogin(user));
       }

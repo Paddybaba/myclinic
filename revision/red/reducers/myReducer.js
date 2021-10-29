@@ -13,7 +13,7 @@ const initalState = {
 const myReducer = (state = initalState, action) => {
   switch (action.type) {
     case "USER_LOGIN": {
-      console.log(state.state);
+      console.log(action.payload);
       return { ...state, user: action.payload };
     }
     case "USER_LOGOUT": {
