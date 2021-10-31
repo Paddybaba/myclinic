@@ -1,43 +1,34 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import Sample from "../src/components/Sample";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { userLogin } from "../red/actions";
-import store from "../red/store";
+import { useRouter } from "next/router";
+import { userLogin } from "../../redux/actions";
+import { connect } from "react-redux";
 
-const loginPage = () => {
+const loginPage = (props) => {
+  console.log("props from login page :", props);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [state, setState] = useState();
-  store.subscribe(() => {
-    setState(store.getState());
-  });
-  console.log(state);
-  const dispatch = useDispatch();
-
+  const router = useRouter();
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-    console.log(email);
+  async function handleSubmit() {
     try {
       const resposne = await axios.post("http://localhost:8080/login", {
         username: email,
         password: password,
       });
       const data = await resposne.data;
-      const user = await data.user;
+      const student = await data.student;
       if (resposne.status === 400 || !data) {
         window.alert("Invalid Credentials 1 !!!");
       } else {
-        console.log(user);
-        alert("Login Successful");
-        dispatch(userLogin(user));
+        props.userLoginHandler(student);
+        router.push("/login/selectTest");
       }
     } catch (err) {
       alert("Invalid credentials !!!");
@@ -51,7 +42,7 @@ const loginPage = () => {
         <title>Student Login</title>
       </Head>
       <div className="col-5 mx-auto">
-        <div className="text-center text-uppercase fs-3 fw-bold mt-5">
+        <div className="text-center text-uppercase fs-3 fw-bold my-5">
           Student Login
         </div>
         <Form>
@@ -75,9 +66,9 @@ const loginPage = () => {
           <Button
             block="true"
             className="mt-4"
-            type="submit"
+            // type="submit" (This is not allowing action to work properly)
             disabled={!validateForm()}
-            onClick={handleSubmit}
+            onClick={() => handleSubmit()}
           >
             Login
           </Button>
@@ -86,5 +77,10 @@ const loginPage = () => {
     </div>
   );
 };
-
-export default loginPage;
+const mdtp = (dispatch) => ({
+  userLoginHandler: (data) => dispatch(userLogin(data)),
+});
+const mstp = (state) => ({
+  student: state.studentReducer.user,
+});
+export default connect(mstp, mdtp)(loginPage);
