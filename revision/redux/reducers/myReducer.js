@@ -9,7 +9,8 @@ const initialState = {
     incorrect: [],
   },
 };
-function myReducer(state = initialState, action) {
+function studentReducer(state = initialState, action) {
+  // console.log("action received in reducer", action);
   switch (action.type) {
     case "USER_LOGIN": {
       return {
@@ -27,4 +28,4 @@ function myReducer(state = initialState, action) {
   }
 }
 
-export default myReducer;
+export default studentReducer;

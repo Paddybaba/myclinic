@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1>Welcome to the Olympiad Revision </h1>
-        <Link href="loginPage">
+        <Link href="/login/loginPage">
           <div className="box-login text-center text-uppercase">Student</div>
         </Link>
         <Link href="loginPage">
