@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { selectOptions } from "../../redux/actions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
@@ -12,10 +13,18 @@ const selectTest = (props) => {
   const [year, setYear] = useState("");
 
   function validateForm() {
-    return subject.length > 0 && author.length > 0 && year.length > 0;
+    return subject.length > 0 && author.length > 0 && year > 0;
   }
 
   const router = useRouter();
+  const onSubmit = () => {
+    const options = {
+      subject,
+      author,
+      year,
+    };
+    props.selectOptionsHandler(options);
+  };
   // console.log(subject);
   return (
     <>
@@ -65,8 +74,8 @@ const selectTest = (props) => {
                   <Button
                     block="true"
                     className="mt-4"
-                    disabled={!validateForm()}
-                    onClick={() => console.log("submitted")}
+                    // disabled={!validateForm()}
+                    onClick={() => onSubmit()}
                   >
                     Login
                   </Button>
@@ -88,7 +97,9 @@ const selectTest = (props) => {
   );
 };
 
-const mdtp = (dispatch) => ({});
+const mdtp = (dispatch) => ({
+  selectOptionsHandler: (options) => dispatch(selectOptions(options)),
+});
 const mstp = (state) => ({
   student: state.studentReducer,
 });

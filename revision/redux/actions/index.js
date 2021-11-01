@@ -5,3 +5,10 @@ export const userLogin = (user) => {
     payload: user,
   };
 };
+
+export const selectOptions = (options) => {
+  return {
+    type: "SELECT_OPTIONS",
+    payload: options,
+  };
+};
