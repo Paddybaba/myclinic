@@ -36,7 +36,7 @@ function studentReducer(state = initialState, action) {
     case "SELECT_OPTIONS": {
       return {
         ...state,
-        options: action.payload,
+        user: { ...state.user, options: action.payload },
       };
     }
     default:

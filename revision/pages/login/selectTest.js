@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 const selectTest = (props) => {
   // console.log("select page props", props);
   const [mystudent, setStudent] = useState(props.student.user.student);
-  const [subject, setSubject] = useState("");
+  const [subject, setSubject] = useState("Science");
   const [author, setAuthor] = useState("");
   const [year, setYear] = useState("");
 
@@ -45,14 +45,14 @@ const selectTest = (props) => {
                       className="form-select"
                       aria-label="Default select example"
                       onChange={(e) => setSubject(e.target.value)}
-                      defaultValue="science"
+                      defaultValue="Science"
                     >
-                      <option value="mathematics">Mathematics</option>
-                      <option value="generalknowledge">
+                      <option value="Mathematics">Mathematics</option>
+                      <option value="Generalknowledge">
                         General Knowledge
                       </option>
-                      <option value="science">Science</option>
-                      <option value="english">English</option>
+                      <option value="Science">Science</option>
+                      <option value="English">English</option>
                     </select>
                   </Form.Group>
                   <Form.Group className="mt-4" size="lg" controlId="author">
@@ -77,7 +77,7 @@ const selectTest = (props) => {
                     // disabled={!validateForm()}
                     onClick={() => onSubmit()}
                   >
-                    Login
+                    Submit
                   </Button>
                 </Form>
                 <Button
