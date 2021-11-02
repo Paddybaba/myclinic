@@ -34,6 +34,7 @@ function studentReducer(state = initialState, action) {
     case "USER_LOGOUT": {
     }
     case "SELECT_OPTIONS": {
+      console.log("options added");
       return {
         ...state,
         user: { ...state.user, options: action.payload },

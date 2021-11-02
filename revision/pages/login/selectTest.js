@@ -4,6 +4,7 @@ import { selectOptions } from "../../redux/actions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const selectTest = (props) => {
   // console.log("select page props", props);
@@ -17,6 +18,7 @@ const selectTest = (props) => {
   }
 
   const router = useRouter();
+
   const onSubmit = () => {
     const options = {
       subject,
@@ -24,8 +26,9 @@ const selectTest = (props) => {
       year,
     };
     props.selectOptionsHandler(options);
+    requestQuestions(options);
   };
-  // console.log(subject);
+  // console.log(props);
   return (
     <>
       <div className="container-fluid">
@@ -48,9 +51,7 @@ const selectTest = (props) => {
                       defaultValue="Science"
                     >
                       <option value="Mathematics">Mathematics</option>
-                      <option value="Generalknowledge">
-                        General Knowledge
-                      </option>
+                      <option value="gk">General Knowledge</option>
                       <option value="Science">Science</option>
                       <option value="English">English</option>
                     </select>
@@ -95,6 +96,11 @@ const selectTest = (props) => {
       </div>
     </>
   );
+};
+const requestQuestions = async (options) => {
+  const response = await axios.post("http://localhost:8080/getquest", options);
+  const data = await response.data;
+  console.log(data);
 };
 
 const mdtp = (dispatch) => ({
