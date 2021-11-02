@@ -26,9 +26,7 @@ async function loginHandler(req, res) {
         } else {
           res.json({
             message: `${userData.username} signin successfully`,
-            code: "successful",
-            token: "empty",
-            // user: { user: userData.user, username: userData.username },
+            student: { student: userData.student, username: userData.username },
           });
         }
       }
