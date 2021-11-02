@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { selectOptions } from "../../redux/actions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
@@ -7,15 +8,23 @@ import { useRouter } from "next/router";
 const selectTest = (props) => {
   // console.log("select page props", props);
   const [mystudent, setStudent] = useState(props.student.user.student);
-  const [subject, setSubject] = useState("");
+  const [subject, setSubject] = useState("Science");
   const [author, setAuthor] = useState("");
   const [year, setYear] = useState("");
 
   function validateForm() {
-    return subject.length > 0 && author.length > 0 && year.length > 0;
+    return subject.length > 0 && author.length > 0 && year > 0;
   }
 
   const router = useRouter();
+  const onSubmit = () => {
+    const options = {
+      subject,
+      author,
+      year,
+    };
+    props.selectOptionsHandler(options);
+  };
   // console.log(subject);
   return (
     <>
@@ -36,14 +45,14 @@ const selectTest = (props) => {
                       className="form-select"
                       aria-label="Default select example"
                       onChange={(e) => setSubject(e.target.value)}
-                      defaultValue="science"
+                      defaultValue="Science"
                     >
-                      <option value="mathematics">Mathematics</option>
-                      <option value="generalknowledge">
+                      <option value="Mathematics">Mathematics</option>
+                      <option value="Generalknowledge">
                         General Knowledge
                       </option>
-                      <option value="science">Science</option>
-                      <option value="english">English</option>
+                      <option value="Science">Science</option>
+                      <option value="English">English</option>
                     </select>
                   </Form.Group>
                   <Form.Group className="mt-4" size="lg" controlId="author">
@@ -65,10 +74,10 @@ const selectTest = (props) => {
                   <Button
                     block="true"
                     className="mt-4"
-                    disabled={!validateForm()}
-                    onClick={() => console.log("submitted")}
+                    // disabled={!validateForm()}
+                    onClick={() => onSubmit()}
                   >
-                    Login
+                    Submit
                   </Button>
                 </Form>
                 <Button
@@ -88,7 +97,9 @@ const selectTest = (props) => {
   );
 };
 
-const mdtp = (dispatch) => ({});
+const mdtp = (dispatch) => ({
+  selectOptionsHandler: (options) => dispatch(selectOptions(options)),
+});
 const mstp = (state) => ({
   student: state.studentReducer,
 });

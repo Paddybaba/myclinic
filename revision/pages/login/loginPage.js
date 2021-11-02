@@ -8,7 +8,7 @@ import { userLogin } from "../../redux/actions";
 import { connect } from "react-redux";
 
 const loginPage = (props) => {
-  // console.log("props from login page :", props);
+  console.log("props from login page :", props);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
@@ -81,6 +81,6 @@ const mdtp = (dispatch) => ({
   userLoginHandler: (data) => dispatch(userLogin(data)),
 });
 const mstp = (state) => ({
-  student: state.studentReducer.user,
+  student: state.studentReducer,
 });
 export default connect(mstp, mdtp)(loginPage);

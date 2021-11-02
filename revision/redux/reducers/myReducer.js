@@ -1,13 +1,22 @@
 const initialState = {
-  user: "",
-  questions: {
-    total: "",
-    anwered: [],
-    unanswered: [],
-    marked: [],
-    correct: [],
-    incorrect: [],
+  user: {
+    student: "",
+    username: "",
+    options: {
+      subject: "",
+      author: "",
+      year: "",
+    },
+    progress: {
+      total: "",
+      anwered: [],
+      unanswered: [],
+      marked: [],
+      correct: [],
+      incorrect: [],
+    },
   },
+  questions: [{}],
 };
 function studentReducer(state = initialState, action) {
   // console.log("action received in reducer", action);
@@ -15,13 +24,20 @@ function studentReducer(state = initialState, action) {
     case "USER_LOGIN": {
       return {
         ...state,
-        user: action.payload,
-        questions: { ...state.questions, total: 50 },
+        user: {
+          ...state.user,
+          student: action.payload.student,
+          username: action.payload.username,
+        },
       };
     }
     case "USER_LOGOUT": {
     }
-    case "SUBMIT_ANSWER": {
+    case "SELECT_OPTIONS": {
+      return {
+        ...state,
+        user: { ...state.user, options: action.payload },
+      };
     }
     default:
       return { ...state };

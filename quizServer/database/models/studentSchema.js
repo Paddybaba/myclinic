@@ -9,9 +9,9 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  student:{
-    type: String
-  }
+  student: {
+    type: String,
+  },
 });
 
 studentSchema.methods.generateToken = async function () {
