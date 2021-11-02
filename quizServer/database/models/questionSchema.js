@@ -1,39 +1,36 @@
 const mongoose = require("mongoose");
 mongoose.set("debug", true);
 const questionSchema = new mongoose.Schema({
-  type: "object",
-  properties: {
-    subject: {
-      type: "string",
-    },
-    author: {
-      type: "string",
-    },
-    model: {
-      type: "string",
-    },
-    year: {
-      type: Number,
-    },
-    question: {
-      type: "object",
-      // required: [quest, options, correct_ans],
-      properties: {
-        marks: {
-          type: Number,
-        },
-        difficulty: {
-          type: "string",
-        },
-        quest: {
-          type: "string",
-        },
-        options: {
-          type: "array",
-        },
-        correct_ans: {
-          type: "string",
-        },
+  subject: {
+    type: "string",
+  },
+  author: {
+    type: "string",
+  },
+  model: {
+    type: "string",
+  },
+  year: {
+    type: Number,
+  },
+  question: {
+    type: "object",
+    // required: [quest, options, correct_ans],
+    properties: {
+      marks: {
+        type: Number,
+      },
+      difficulty: {
+        type: "string",
+      },
+      quest: {
+        type: "string",
+      },
+      options: {
+        type: "array",
+      },
+      correct_ans: {
+        type: "string",
       },
     },
   },
