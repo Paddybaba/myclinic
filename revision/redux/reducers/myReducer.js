@@ -40,6 +40,14 @@ function studentReducer(state = initialState, action) {
         user: { ...state.user, options: action.payload },
       };
     }
+
+    case "SET_QUESTIONS": {
+      console.log("questions added to state");
+      return {
+        ...state,
+        questions: action.payload,
+      };
+    }
     default:
       return { ...state };
   }

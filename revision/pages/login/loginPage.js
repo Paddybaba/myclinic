@@ -28,7 +28,7 @@ const loginPage = (props) => {
         window.alert("Invalid Credentials 1 !!!");
       } else {
         props.userLoginHandler(student);
-        router.push("/login/selectTest");
+        router.push("/test/selectTest");
       }
     } catch (err) {
       alert("Invalid credentials !!!");

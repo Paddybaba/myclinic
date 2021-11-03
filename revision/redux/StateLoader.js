@@ -6,7 +6,7 @@ export default class StateLoader {
       if (serializedState === null) {
         return this.initializeState();
       }
-
+      console.log("from stateLoader", serializedState);
       return JSON.parse(serializedState);
     } catch (err) {
       return this.initializeState();

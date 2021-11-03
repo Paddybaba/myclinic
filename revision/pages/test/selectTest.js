@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { selectOptions } from "../../redux/actions";
+import { selectOptions, setQuestions } from "../../redux/actions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
@@ -19,14 +19,20 @@ const selectTest = (props) => {
 
   const router = useRouter();
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const options = {
       subject,
       author,
       year,
     };
     props.selectOptionsHandler(options);
-    requestQuestions(options);
+    const questions = await requestQuestions(options);
+    if (questions.length > 0) {
+      props.setQuestionsHandler(questions);
+      router.push("/test/start_test");
+    } else {
+      alert("NO tests available");
+    }
   };
   // console.log(props);
   return (
@@ -34,7 +40,7 @@ const selectTest = (props) => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-10 mx-auto">
-            <h3 className="col-10 text-center mx-auto">
+            <h3 className="col-10 text-center mx-auto mt-3">
               Welcome : {mystudent}
             </h3>
             <h3>Select your test paper</h3>
@@ -100,11 +106,12 @@ const selectTest = (props) => {
 const requestQuestions = async (options) => {
   const response = await axios.post("http://localhost:8080/getquest", options);
   const data = await response.data;
-  console.log(data);
+  return data;
 };
 
 const mdtp = (dispatch) => ({
   selectOptionsHandler: (options) => dispatch(selectOptions(options)),
+  setQuestionsHandler: (questions) => dispatch(setQuestions(questions)),
 });
 const mstp = (state) => ({
   student: state.studentReducer,

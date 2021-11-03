@@ -12,3 +12,10 @@ export const selectOptions = (options) => {
     payload: options,
   };
 };
+
+export const setQuestions = (questions) => {
+  return {
+    type: "SET_QUESTIONS",
+    payload: questions,
+  };
+};
