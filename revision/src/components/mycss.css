@@ -17,3 +17,51 @@
   background-color: brown;
   color: white;
 }
+.test-page {
+  background-color: rgb(250, 123, 4);
+  height: 100vh;
+  color: black;
+}
+/* ///////TOP BAR ////////// */
+.topbar {
+  width: 100%;
+  height: 50px;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome {
+  margin-top: 20%;
+  font-size: 200%;
+}
+.start-button {
+  width: 90px;
+  height: 90px;
+  /* border: 1px solid red; */
+  background-color: rgb(128, 192, 33);
+  color: black;
+  font-weight: bold;
+  box-shadow: 2px 2px 4px rgb(73, 73, 73);
+  border-radius: 50%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  transition: all 200ms ease;
+}
+.start-button:active {
+  transform: scale(0.98);
+  box-shadow: 1px 1px 2px;
+}
+
+/* ///////    TEST_PAGE   //////////// */
+.box {
+  height: 200px;
+  border: 2px solid green;
+}
+.test-page {
+  background-color: brown;
+  height: 100vh;
+}
