@@ -4,11 +4,13 @@ import TopBar from "../../src/components/TopBar";
 
 const test_page = (props) => {
   const data = props.questBank;
+
   const [activeQ, setActiveQ] = useState(0);
-  // console.log(data[0].question.correct_ans);
+  const [clickedOption, setClickedOption] = useState([]);
+  console.log(clickedOption);
 
   const onOptionClick = (e) => {
-    // console.log("you clicked on : ", e.target.innerHTML.toLowerCase());
+    setClickedOption([...clickedOption, e.target.getAttribute("position")]);
     const clickedAnswer = e.target.innerHTML.toLowerCase();
     const correctAns = data[activeQ].question.correct_ans.toLowerCase();
     if (clickedAnswer === correctAns) {
@@ -16,8 +18,16 @@ const test_page = (props) => {
     } else {
       console.log("incorrect answer");
     }
-    // console.log("correct ans is ", correctAns);
   };
+
+  const onNextClick = () => {
+    setActiveQ(activeQ + 1);
+  };
+
+  const onPreviousClick = () => {
+    setActiveQ(activeQ - 1);
+  };
+
   try {
     let currentQuestion = data[activeQ].question;
     return (
@@ -42,8 +52,15 @@ const test_page = (props) => {
                         return (
                           <li
                             key={index}
+                            position={index}
                             className="options"
                             onClick={(e) => onOptionClick(e)}
+                            style={{
+                              border:
+                                index == clickedOption
+                                  ? "1px solid green"
+                                  : "none",
+                            }}
                           >
                             {element}
                           </li>
@@ -55,7 +72,24 @@ const test_page = (props) => {
                 <div className="col-4 mx-auto navi-box box"></div>
               </div>
               <div className="row">
-                <div className="col-12 mx-auto footer-box box"></div>
+                <div className="col-12 mx-auto footer-box box">
+                  <button
+                    onClick={() => onPreviousClick()}
+                    style={{ visibility: activeQ == 0 ? "hidden" : "visible" }}
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={() => onNextClick()}
+                    style={{
+                      visibility:
+                        activeQ == data.length - 1 ? "hidden" : "visible",
+                    }}
+                  >
+                    Next
+                  </button>
+                  <button>Finish</button>
+                </div>
               </div>
             </div>
           </div>
