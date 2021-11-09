@@ -7,10 +7,13 @@ const test_page = (props) => {
 
   const [activeQ, setActiveQ] = useState(0);
   const [clickedOption, setClickedOption] = useState([]);
+
   console.log(clickedOption);
 
   const onOptionClick = (e) => {
-    setClickedOption([...clickedOption, e.target.getAttribute("position")]);
+    const tempArray = [...clickedOption];
+    tempArray[activeQ] = e.target.getAttribute("position");
+    setClickedOption([...tempArray]);
     const clickedAnswer = e.target.innerHTML.toLowerCase();
     const correctAns = data[activeQ].question.correct_ans.toLowerCase();
     if (clickedAnswer === correctAns) {
@@ -57,7 +60,7 @@ const test_page = (props) => {
                             onClick={(e) => onOptionClick(e)}
                             style={{
                               border:
-                                index == clickedOption
+                                index == clickedOption[activeQ]
                                   ? "1px solid green"
                                   : "none",
                             }}
