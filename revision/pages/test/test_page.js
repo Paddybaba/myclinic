@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import TopBar from "../../src/components/TopBar";
 
 const test_page = (props) => {
-  console.log(props.student_record);
+  // console.log(props.student_record);
   const data = props.questBank;
-
+  const score = {
+    total: data.length,
+    answered: [],
+    unanswered: [],
+    marked: [],
+    correct: [],
+    incorrect: [],
+  };
   const [activeQ, setActiveQ] = useState(0);
   const [clickedOption, setClickedOption] = useState([]);
+  const [progress, setProgress] = useState(score);
 
   // console.log(clickedOption);
-
+  useEffect(() => {
+    console.log("total questions :", progress.total);
+  }, []);
   const onOptionClick = (e) => {
     const tempArray = [...clickedOption];
     tempArray[activeQ] = e.target.getAttribute("position");
@@ -73,7 +83,16 @@ const test_page = (props) => {
                     </ol>
                   </div>
                 </div>
-                <div className="col-4 mx-auto navi-box box"></div>
+                <div className="col-4 mx-auto navi-box box">
+                  <p>Total Questions : {progress.total}</p>
+                  {data.map((element, index) => {
+                    return (
+                      <div style={{ float: "left", margin: 5 }}>
+                        {index + 1}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
               <div className="row">
                 <div className="col-12 mx-auto footer-box box">
