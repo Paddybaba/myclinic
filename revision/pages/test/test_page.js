@@ -17,21 +17,48 @@ const test_page = (props) => {
   const [clickedOption, setClickedOption] = useState([]);
   const [progress, setProgress] = useState(score);
 
+  function addToAnswered() {
+    var answeredQuest = progress.answered;
+    answeredQuest.indexOf(activeQ) === -1
+      ? answeredQuest.push(activeQ)
+      : console.log("already answered");
+    // console.log(activeQ, " is present in ", answeredQuest);
+    setProgress({ ...progress, answered: answeredQuest });
+    console.log(progress);
+  }
+
+  function addToResult(clicked, correct) {
+    var correctArray = progress.correct;
+    var incorrectArray = progress.incorrect;
+    if (clicked === correct) {
+      correctArray.indexOf(activeQ) === -1 ? correctArray.push(activeQ) : {};
+      incorrectArray.indexOf(activeQ) !== -1
+        ? incorrectArray.splice(incorrectArray.indexOf(activeQ), 1)
+        : {};
+      setProgress({ ...progress, correct: correctArray });
+    } else {
+      incorrectArray.indexOf(activeQ) === -1
+        ? incorrectArray.push(activeQ)
+        : {};
+      correctArray.indexOf(activeQ) !== -1
+        ? correctArray.splice(correctArray.indexOf(activeQ), 1)
+        : {};
+      setProgress({ ...progress, incorrect: incorrectArray });
+    }
+  }
+
   // console.log(clickedOption);
-  useEffect(() => {
-    console.log("total questions :", progress.total);
-  }, []);
+
   const onOptionClick = (e) => {
     const tempArray = [...clickedOption];
     tempArray[activeQ] = e.target.getAttribute("position");
     setClickedOption([...tempArray]);
+    // console.log(clickedOption);
+
+    addToAnswered();
     const clickedAnswer = e.target.innerHTML.toLowerCase();
     const correctAns = data[activeQ].question.correct_ans.toLowerCase();
-    if (clickedAnswer === correctAns) {
-      console.log("Your answer is correct");
-    } else {
-      console.log("incorrect answer");
-    }
+    addToResult(clickedAnswer, correctAns);
   };
 
   const onNextClick = () => {
@@ -42,6 +69,10 @@ const test_page = (props) => {
     setActiveQ(activeQ - 1);
   };
 
+  const onFinishClick = () => {
+    var numberOfCorrects = progress.correct.length;
+    alert("Finish", numberOfCorrects);
+  };
   try {
     let currentQuestion = data[activeQ].question;
     return (
@@ -87,7 +118,21 @@ const test_page = (props) => {
                   <p>Total Questions : {progress.total}</p>
                   {data.map((element, index) => {
                     return (
-                      <div style={{ float: "left", margin: 5 }}>
+                      <div
+                        key={index}
+                        className="question-number-box"
+                        style={
+                          (activeQ === index
+                            ? { backgroundColor: "grey", color: "white" }
+                            : {},
+                          progress.answered.includes(index)
+                            ? { backgroundColor: "greenyellow" }
+                            : {})
+                        }
+                        onClick={() => {
+                          setActiveQ(index);
+                        }}
+                      >
                         {index + 1}
                       </div>
                     );
@@ -111,7 +156,7 @@ const test_page = (props) => {
                   >
                     Next
                   </button>
-                  <button>Finish</button>
+                  <button onClick={() => onFinishClick()}>Finish</button>
                 </div>
               </div>
             </div>
