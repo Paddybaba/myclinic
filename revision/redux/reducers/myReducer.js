@@ -9,7 +9,7 @@ const initialState = {
     },
     progress: {
       total: "",
-      anwered: [],
+      answered: [],
       unanswered: [],
       marked: [],
       correct: [],
@@ -46,6 +46,16 @@ function studentReducer(state = initialState, action) {
       return {
         ...state,
         questions: action.payload,
+      };
+    }
+
+    case "SET_TOTAL_QUESTIONS": {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          progress: { ...state.user.progress, total: action.payload },
+        },
       };
     }
     default:

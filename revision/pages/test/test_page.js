@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import TopBar from "../../src/components/TopBar";
 
 const test_page = (props) => {
+  console.log(props.student_record);
   const data = props.questBank;
 
   const [activeQ, setActiveQ] = useState(0);
   const [clickedOption, setClickedOption] = useState([]);
 
-  console.log(clickedOption);
+  // console.log(clickedOption);
 
   const onOptionClick = (e) => {
     const tempArray = [...clickedOption];
@@ -109,6 +110,7 @@ const test_page = (props) => {
 const mstp = (state) => {
   return {
     questBank: state.studentReducer.questions,
+    student_record: state.studentReducer.user.progress,
   };
 };
 export default connect(mstp)(test_page);

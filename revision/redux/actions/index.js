@@ -19,3 +19,10 @@ export const setQuestions = (questions) => {
     payload: questions,
   };
 };
+
+export const setTotalQuestions = (length) => {
+  return {
+    type: "SET_TOTAL_QUESTIONS",
+    payload: length,
+  };
+};
