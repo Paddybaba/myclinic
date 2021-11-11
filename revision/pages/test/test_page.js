@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import TopBar from "../../src/components/TopBar";
-
+import PopModal from "../../src/components/PopModal";
 const test_page = (props) => {
   // console.log(props.student_record);
   const data = props.questBank;
@@ -17,6 +17,7 @@ const test_page = (props) => {
   const [clickedOption, setClickedOption] = useState([]);
   const [progress, setProgress] = useState(score);
 
+  const [modalShow, setModalShow] = useState(false);
   function addToAnswered() {
     var answeredQuest = progress.answered;
     answeredQuest.indexOf(activeQ) === -1
@@ -71,24 +72,24 @@ const test_page = (props) => {
 
   const onFinishClick = () => {
     var numberOfCorrects = progress.correct.length;
-    console.log("Finish", numberOfCorrects);
+    alert("Finish", numberOfCorrects);
   };
   try {
     let currentQuestion = data[activeQ].question;
     return (
       <>
-        <div className="container-fluid test-page">
+        <div className="container-fluid test-page gx-0">
           <TopBar />
-          <div className="row gx-0">
+          <div className="row gx-0 main-container">
             <div className="col-10 mx-auto">
-              <div className="row">
+              <div className="row ">
                 <div className="col-8 mx-auto quest-box">
                   <div className="row quest-toprow">
                     <div className="col-6"> Question No. {activeQ + 1}</div>
                     <div className="col-6 text-center">Marks : 5</div>
                   </div>
                   <div className="row ">
-                    <div className="col-12 quest-question">
+                    <div className="col-12 quest-question mt-2 mr-3">
                       {currentQuestion.quest}
                     </div>
 
@@ -114,7 +115,7 @@ const test_page = (props) => {
                     </ol>
                   </div>
                 </div>
-                <div className="col-4 mx-auto navi-box box">
+                <div className="col-4 mx-auto navi-box">
                   <p>Total Questions : {progress.total}</p>
                   {data.map((element, index) => {
                     return (
@@ -139,8 +140,8 @@ const test_page = (props) => {
                   })}
                 </div>
               </div>
-              <div className="row">
-                <div className="col-12 mx-auto footer-box">
+              <div className="row mx-auto">
+                <div className="col-10 mx-auto footer-box">
                   <button
                     className="previous-next"
                     onClick={() => onPreviousClick()}
@@ -162,10 +163,15 @@ const test_page = (props) => {
                   </button>
                   <button
                     className=" previous-next finish-button"
-                    onClick={() => onFinishClick()}
+                    onClick={() => setModalShow(true)}
                   >
                     Finish
                   </button>
+                  <PopModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                    progress={progress}
+                  />
                 </div>
               </div>
             </div>
