@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import TopBar from "../../src/components/TopBar";
 import PopModal from "../../src/components/PopModal";
+
+function saveProgress(score) {
+  localStorage.setItem("score", JSON.stringify(score));
+}
+
 const test_page = (props) => {
   // console.log(props.student_record);
   const data = props.questBank;
+
   const score = {
     total: data.length,
     answered: [],
@@ -13,11 +19,22 @@ const test_page = (props) => {
     correct: [],
     incorrect: [],
   };
+
   const [activeQ, setActiveQ] = useState(0);
   const [clickedOption, setClickedOption] = useState([]);
-  const [progress, setProgress] = useState(score);
+  const [progress, setProgress] = useState();
 
   const [modalShow, setModalShow] = useState(false);
+
+  useEffect(() => {
+    const scoreData = localStorage.getItem("score");
+    if (scoreData) {
+      setProgress(JSON.parse(scoreData));
+    } else {
+      setProgress(score);
+    }
+  }, []);
+
   function addToAnswered() {
     var answeredQuest = progress.answered;
     answeredQuest.indexOf(activeQ) === -1
@@ -60,6 +77,7 @@ const test_page = (props) => {
     const clickedAnswer = e.target.innerHTML.toLowerCase();
     const correctAns = data[activeQ].question.correct_ans.toLowerCase();
     addToResult(clickedAnswer, correctAns);
+    saveProgress(progress);
   };
 
   const onNextClick = () => {
@@ -78,7 +96,7 @@ const test_page = (props) => {
     let currentQuestion = data[activeQ].question;
     return (
       <>
-        <div className="container-fluid test-page gx-0">
+        <div className="container-fluid test-page gx-0 ">
           <TopBar />
           <div className="row gx-0 main-container">
             <div className="col-10 mx-auto">

@@ -11,19 +11,16 @@ function PopModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          You have Finished the test
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">Scorecard</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Your Scorecard : </h4>
-        <p>Total Questions : {props.progress.total}</p>
-        <p>Correct Answer : {props.progress.correct.length}</p>
-        <p>Incorrect Answers : {props.progress.incorrect.length}</p>
-        <p>
+        <h4>Total Questions : {props.progress.total}</h4>
+        <h4>Correct Answer : {props.progress.correct.length}</h4>
+        <h4>Incorrect Answers : {props.progress.incorrect.length}</h4>
+        <h4 style={{ fontWeight: "bolder" }}>
           Marks Obtained :{" "}
           {(props.progress.correct.length / props.progress.total) * 100}%
-        </p>
+        </h4>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
