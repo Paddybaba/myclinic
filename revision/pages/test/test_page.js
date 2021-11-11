@@ -71,7 +71,7 @@ const test_page = (props) => {
 
   const onFinishClick = () => {
     var numberOfCorrects = progress.correct.length;
-    alert("Finish", numberOfCorrects);
+    console.log("Finish", numberOfCorrects);
   };
   try {
     let currentQuestion = data[activeQ].question;
@@ -79,7 +79,7 @@ const test_page = (props) => {
       <>
         <div className="container-fluid test-page">
           <TopBar />
-          <div className="row">
+          <div className="row gx-0">
             <div className="col-10 mx-auto">
               <div className="row">
                 <div className="col-8 mx-auto quest-box">
@@ -140,23 +140,32 @@ const test_page = (props) => {
                 </div>
               </div>
               <div className="row">
-                <div className="col-12 mx-auto footer-box box">
+                <div className="col-12 mx-auto footer-box">
                   <button
+                    className="previous-next"
                     onClick={() => onPreviousClick()}
-                    style={{ visibility: activeQ == 0 ? "hidden" : "visible" }}
+                    // style={{ visibility: activeQ == 0 ? "hidden" : "visible" }}
+                    disabled={activeQ === 0}
                   >
                     Previous
                   </button>
                   <button
+                    className="previous-next"
                     onClick={() => onNextClick()}
-                    style={{
-                      visibility:
-                        activeQ == data.length - 1 ? "hidden" : "visible",
-                    }}
+                    // style={{
+                    //   visibility:
+                    //     // activeQ == data.length - 1 ? "hidden" : "visible",
+                    // }}
+                    disabled={activeQ == data.length - 1}
                   >
                     Next
                   </button>
-                  <button onClick={() => onFinishClick()}>Finish</button>
+                  <button
+                    className=" previous-next finish-button"
+                    onClick={() => onFinishClick()}
+                  >
+                    Finish
+                  </button>
                 </div>
               </div>
             </div>
