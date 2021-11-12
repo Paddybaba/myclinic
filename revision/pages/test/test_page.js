@@ -10,7 +10,7 @@ function saveProgress(score) {
 const test_page = (props) => {
   // console.log(props.student_record);
   const data = props.questBank;
-
+  const arrayofNulls = new Array(data.length).fill("x");
   const score = {
     total: data.length,
     answered: [],
@@ -18,24 +18,20 @@ const test_page = (props) => {
     marked: [],
     correct: [],
     incorrect: [],
-    clickedAnsList: [],
+    clickedAnsList: arrayofNulls,
     correctAnsList: [],
   };
-  const [progress, setProgress] = useState(score);
+  const [progress, setProgress] = useState(
+    typeof window !== "undefined"
+      ? localStorage.getItem("score")
+        ? JSON.parse(localStorage.getItem("score"))
+        : score
+      : score
+  );
   const [activeQ, setActiveQ] = useState(0);
   const [clickedOption, setClickedOption] = useState(progress.clickedAnsList);
 
   const [modalShow, setModalShow] = useState(false);
-
-  useEffect(() => {
-    const scoreData = localStorage.getItem("score");
-    if (scoreData) {
-      setProgress(JSON.parse(scoreData));
-    } else {
-      setProgress(score);
-    }
-  }, []);
-
   function addToAnswered() {
     var answeredQuest = progress.answered;
     answeredQuest.indexOf(activeQ) === -1
@@ -43,13 +39,13 @@ const test_page = (props) => {
       : console.log("already answered");
     // console.log(activeQ, " is present in ", answeredQuest);
     setProgress({ ...progress, answered: answeredQuest });
-    console.log(progress);
+    // console.log(progress);
   }
   function addToClicked(value) {
     var clickedList = progress.clickedAnsList;
-    const newArray = addAfter(clickedList, activeQ, value);
-    console.log("new Array", newArray);
-    setProgress({ ...progress, clickedAnsList: newArray });
+    clickedList[activeQ] = value;
+    console.log("new Array", clickedList);
+    setProgress({ ...progress, clickedAnsList: clickedList });
   }
   function addToResult(clicked, correct) {
     var correctArray = progress.correct;
