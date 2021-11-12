@@ -74,7 +74,7 @@
 .main-container {
   height: 84vh;
 
-  background-color: honeydew;
+  /* background-color: honeydew; */
 }
 .box {
   height: 200px;
@@ -83,7 +83,7 @@
 .test-page {
   /* display: flex; */
   /* position: relative; */
-  background-color: #fff;
+  background-color: honeydew;
   height: 100vh;
   margin-top: 50px;
 }

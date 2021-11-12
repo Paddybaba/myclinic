@@ -18,11 +18,12 @@ const test_page = (props) => {
     marked: [],
     correct: [],
     incorrect: [],
+    clickedAnsList: [],
+    correctAnsList: [],
   };
-
+  const [progress, setProgress] = useState(score);
   const [activeQ, setActiveQ] = useState(0);
-  const [clickedOption, setClickedOption] = useState([]);
-  const [progress, setProgress] = useState();
+  const [clickedOption, setClickedOption] = useState(progress.clickedAnsList);
 
   const [modalShow, setModalShow] = useState(false);
 
@@ -44,7 +45,12 @@ const test_page = (props) => {
     setProgress({ ...progress, answered: answeredQuest });
     console.log(progress);
   }
-
+  function addToClicked(value) {
+    var clickedList = progress.clickedAnsList;
+    const newArray = addAfter(clickedList, activeQ, value);
+    console.log("new Array", newArray);
+    setProgress({ ...progress, clickedAnsList: newArray });
+  }
   function addToResult(clicked, correct) {
     var correctArray = progress.correct;
     var incorrectArray = progress.incorrect;
@@ -68,11 +74,16 @@ const test_page = (props) => {
   // console.log(clickedOption);
 
   const onOptionClick = (e) => {
-    const tempArray = [...clickedOption];
-    tempArray[activeQ] = e.target.getAttribute("position");
-    setClickedOption([...tempArray]);
-    // console.log(clickedOption);
-
+    // const tempArray = [...clickedOption];
+    // tempArray[activeQ] = e.target.getAttribute("position");
+    // setClickedOption([...tempArray]);
+    // setClickedOption({
+    //   ...clickedOption,
+    //   [activeQ]: e.target.getAttribute("position"),
+    // });
+    // console.log("clickedOPtion", clickedOption);
+    // setProgress({ ...progress, clickedAnsList: clickedOption });
+    addToClicked(e.target.getAttribute("position"));
     addToAnswered();
     const clickedAnswer = e.target.innerHTML.toLowerCase();
     const correctAns = data[activeQ].question.correct_ans.toLowerCase();
@@ -82,10 +93,12 @@ const test_page = (props) => {
 
   const onNextClick = () => {
     setActiveQ(activeQ + 1);
+    setProgress({ ...progress, clickedAnsList: clickedOption });
   };
 
   const onPreviousClick = () => {
     setActiveQ(activeQ - 1);
+    setProgress({ ...progress, clickedAnsList: clickedOption });
   };
 
   const onFinishClick = () => {
@@ -121,7 +134,7 @@ const test_page = (props) => {
                             onClick={(e) => onOptionClick(e)}
                             style={{
                               border:
-                                index == clickedOption[activeQ]
+                                index == progress.clickedAnsList[activeQ]
                                   ? "1px solid green"
                                   : "none",
                             }}
@@ -150,6 +163,10 @@ const test_page = (props) => {
                         }
                         onClick={() => {
                           setActiveQ(index);
+                          setProgress({
+                            ...progress,
+                            clickedAnsList: clickedOption,
+                          });
                         }}
                       >
                         {index + 1}
@@ -203,6 +220,10 @@ const test_page = (props) => {
     return <div>Error occured</div>;
   }
 };
+
+function addAfter(array, index, newItem) {
+  return [...array.slice(0, index), newItem, ...array.slice(index)];
+}
 
 const mstp = (state) => {
   return {
