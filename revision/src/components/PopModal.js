@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import router, { useRouter } from "next/router";
 
 function PopModal(props) {
   return (
@@ -24,6 +25,9 @@ function PopModal(props) {
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={() => router.push("/test/result_page")}>
+          Check Result
+        </Button>
       </Modal.Footer>
     </Modal>
   );

@@ -105,8 +105,8 @@ const test_page = (props) => {
     let currentQuestion = data[activeQ].question;
     return (
       <>
+        <TopBar />
         <div className="container-fluid test-page gx-0 ">
-          <TopBar />
           <div className="row gx-0 main-container">
             <div className="col-10 mx-auto">
               <div className="row ">
