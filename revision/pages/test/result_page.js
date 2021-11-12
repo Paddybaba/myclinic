@@ -4,16 +4,27 @@ import TopBar from "../../src/components/TopBar";
 
 //////
 //  make an array of correct answers
+//  pointer events remove from options
 //  display correct answer in green
 //  display marked answer in green border if correct and red border if incorrect
 
 const result_page = (props) => {
   const data = props.questBank;
+
+  //   console.log(correctAnswerArray);
   const [progress, setProgress] = useState(
-    JSON.parse(localStorage.getItem("score"))
+    typeof window !== "undefined"
+      ? localStorage.getItem("score")
+        ? JSON.parse(localStorage.getItem("score"))
+        : {}
+      : {}
   );
   const [activeQ, setActiveQ] = useState(0);
   const [clickedOption, setClickedOption] = useState(progress.clickedAnsList);
+  try {
+  } catch (e) {
+    console.log("cannont read quest");
+  }
 
   const onNextClick = () => {
     setActiveQ(activeQ + 1);
@@ -27,6 +38,16 @@ const result_page = (props) => {
 
   try {
     let currentQuestion = data[activeQ].question;
+    const clickedAnswerArray = data.map((quest, index) => {
+      return quest.question.options[progress.clickedAnsList[index]];
+    });
+
+    const correctAnswerArray = data.map((quest, index) => {
+      return quest.question.correct_ans;
+    });
+    const correctAnswer = correctAnswerArray[activeQ].toLowerCase();
+
+    console.log("clickedAnswe Array", clickedAnswerArray);
     return (
       <>
         <TopBar />
@@ -34,7 +55,10 @@ const result_page = (props) => {
           <div className="row gx-0 main-container">
             <div className="col-10 mx-auto">
               <div className="row ">
-                <div className="col-8 mx-auto quest-box">
+                <div
+                  className="col-8 mx-auto quest-box"
+                  style={{ pointerEvents: "none" }}
+                >
                   <div className="row quest-toprow">
                     <div className="col-6"> Question No. {activeQ + 1}</div>
                     <div className="col-6 text-center">Marks : 5</div>
@@ -57,6 +81,10 @@ const result_page = (props) => {
                                 index == progress.clickedAnsList[activeQ]
                                   ? "1px solid green"
                                   : "none",
+                              backgroundColor:
+                                element.toLowerCase() == correctAnswer
+                                  ? "greenyellow"
+                                  : "transparent",
                             }}
                           >
                             {element}
