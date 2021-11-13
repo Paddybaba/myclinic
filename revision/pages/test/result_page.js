@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import TopBar from "../../src/components/TopBar";
 
 //////
-//  make an array of correct answers
-//  pointer events remove from options
-//  display correct answer in green
+//  make an array of correct answers *
+//  pointer events remove from options *
+//  question navigation box color (red for wrong)
+//  display correct answer in green *
 //  display marked answer in green border if correct and red border if incorrect
 
 const result_page = (props) => {
@@ -20,7 +21,7 @@ const result_page = (props) => {
       : {}
   );
   const [activeQ, setActiveQ] = useState(0);
-  const [clickedOption, setClickedOption] = useState(progress.clickedAnsList);
+  // const [clickedOption, setClickedOption] = useState(progress.clickedAnsList);
   try {
   } catch (e) {
     console.log("cannont read quest");
@@ -28,12 +29,12 @@ const result_page = (props) => {
 
   const onNextClick = () => {
     setActiveQ(activeQ + 1);
-    setProgress({ ...progress, clickedAnsList: clickedOption });
+    // setProgress({ ...progress, clickedAnsList: clickedOption });
   };
 
   const onPreviousClick = () => {
     setActiveQ(activeQ - 1);
-    setProgress({ ...progress, clickedAnsList: clickedOption });
+    // setProgress({ ...progress, clickedAnsList: clickedOption });
   };
 
   try {
@@ -46,8 +47,6 @@ const result_page = (props) => {
       return quest.question.correct_ans;
     });
     const correctAnswer = correctAnswerArray[activeQ].toLowerCase();
-
-    console.log("clickedAnswe Array", clickedAnswerArray);
     return (
       <>
         <TopBar />
@@ -105,17 +104,11 @@ const result_page = (props) => {
                           (activeQ === index
                             ? { backgroundColor: "grey", color: "white" }
                             : {},
-                          progress.answered.includes(index)
+                          correctAnswerArray[index].toLowerCase() ==
+                          clickedAnswerArray[index].toLowerCase()
                             ? { backgroundColor: "greenyellow" }
-                            : {})
+                            : { backgroundColor: "red" })
                         }
-                        onClick={() => {
-                          setActiveQ(index);
-                          setProgress({
-                            ...progress,
-                            clickedAnsList: clickedOption,
-                          });
-                        }}
                       >
                         {index + 1}
                       </div>
@@ -148,7 +141,7 @@ const result_page = (props) => {
                     className=" previous-next finish-button"
                     onClick={() => setModalShow(true)}
                   >
-                    Finish
+                    END TEST
                   </button>
                 </div>
               </div>
