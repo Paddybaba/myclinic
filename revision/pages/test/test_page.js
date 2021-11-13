@@ -44,7 +44,7 @@ const test_page = (props) => {
   function addToClicked(value) {
     var clickedList = progress.clickedAnsList;
     clickedList[activeQ] = value;
-    console.log("new Array", clickedList);
+    // console.log("new Array", clickedList);
     setProgress({ ...progress, clickedAnsList: clickedList });
   }
   function addToResult(clicked, correct) {
@@ -110,7 +110,7 @@ const test_page = (props) => {
           <div className="row gx-0 main-container">
             <div className="col-10 mx-auto">
               <div className="row ">
-                <div className="col-8 mx-auto quest-box">
+                <div className="col-sm-8 mx-auto quest-box">
                   <div className="row quest-toprow">
                     <div className="col-6"> Question No. {activeQ + 1}</div>
                     <div className="col-6 text-center">Marks : 5</div>
@@ -142,7 +142,7 @@ const test_page = (props) => {
                     </ol>
                   </div>
                 </div>
-                <div className="col-4 mx-auto navi-box">
+                <div className="col-sm-4 mx-auto navi-box">
                   <p>Total Questions : {progress.total}</p>
                   {data.map((element, index) => {
                     return (
@@ -154,7 +154,7 @@ const test_page = (props) => {
                             ? { backgroundColor: "grey", color: "white" }
                             : {},
                           progress.answered.includes(index)
-                            ? { backgroundColor: "greenyellow" }
+                            ? { backgroundColor: "rgb(128, 192, 33)" }
                             : {})
                         }
                         onClick={() => {

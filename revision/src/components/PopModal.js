@@ -24,6 +24,12 @@ function PopModal(props) {
         </h4>
       </Modal.Body>
       <Modal.Footer>
+        <Button
+          onClick={() => router.push("/test/selectTest")}
+          style={{ alignSelf: "left" }}
+        >
+          Finish Test
+        </Button>
         <Button onClick={props.onHide}>Close</Button>
         <Button onClick={() => router.push("/test/result_page")}>
           Check Result

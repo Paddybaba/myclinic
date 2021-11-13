@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import TopBar from "../../src/components/TopBar";
+import router from "next/router";
 
 //////
 //  make an array of correct answers *
@@ -55,7 +56,7 @@ const result_page = (props) => {
             <div className="col-10 mx-auto">
               <div className="row ">
                 <div
-                  className="col-8 mx-auto quest-box"
+                  className="col-sm-8 mx-auto quest-box"
                   style={{ pointerEvents: "none" }}
                 >
                   <div className="row quest-toprow">
@@ -93,7 +94,7 @@ const result_page = (props) => {
                     </ol>
                   </div>
                 </div>
-                <div className="col-4 mx-auto navi-box">
+                <div className="col-sm-4 mx-auto navi-box">
                   <p>Total Questions : {progress.total}</p>
                   {data.map((element, index) => {
                     return (
@@ -139,7 +140,7 @@ const result_page = (props) => {
                   </button>
                   <button
                     className=" previous-next finish-button"
-                    onClick={() => setModalShow(true)}
+                    onClick={() => router.push("/test/selectTest")}
                   >
                     END TEST
                   </button>

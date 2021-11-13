@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import router, { useRouter } from "next/router";
 
 const StartTest = (props) => {
-  console.log("props from start test", props);
+  // console.log("props from start test", props);
   const number_of_questions = props.questBank.length;
   const arrayofNulls = new Array(number_of_questions).fill("x");
   const score = {
