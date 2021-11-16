@@ -1,3 +1,24 @@
+body {
+  background-color: honeydew;
+}
+/* //STARTING PAGE /// */
+.image-box {
+  width: 200;
+  height: 200;
+  align-items: "center";
+  display: "flex";
+  justify-content: "center";
+  padding-top: 100px;
+  animation: bounce 800ms alternate infinite;
+}
+@keyframes bounce {
+  from {
+    transform: translateY(50px);
+  }
+  to {
+    transform: translateY(-50px);
+  }
+}
 .box-login {
   display: flex;
   align-items: center;

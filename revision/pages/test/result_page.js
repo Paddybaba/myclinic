@@ -110,6 +110,9 @@ const result_page = (props) => {
                             ? { backgroundColor: "greenyellow" }
                             : { backgroundColor: "red" })
                         }
+                        onClick={() => {
+                          setActiveQ(index);
+                        }}
                       >
                         {index + 1}
                       </div>

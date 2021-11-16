@@ -37,11 +37,14 @@ const loginPage = (props) => {
   }
 
   return (
-    <div className="row mt-5">
+    <div
+      className="row gx-0"
+      style={{ height: "100vh", backgroundColor: "honeydew" }}
+    >
       <Head>
         <title>Student Login</title>
       </Head>
-      <div className="col-5 mx-auto">
+      <div className="col-7 mt-5 mx-auto">
         <div className="text-center text-uppercase fs-3 fw-bold my-5">
           Student Login
         </div>

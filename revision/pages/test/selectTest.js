@@ -37,13 +37,16 @@ const selectTest = (props) => {
   // console.log(props);
   return (
     <>
-      <div className="container-fluid">
+      <div
+        className="container-fluid"
+        style={{ backgroundColor: "honeydew", height: "100vh" }}
+      >
         <div className="row">
           <div className="col-10 mx-auto">
-            <h3 className="col-10 text-center mx-auto mt-3">
+            <h3 className="col-10 text-center mx-auto mt-5">
               Welcome : {mystudent}
             </h3>
-            <h3>Select your test paper</h3>
+            <h3 className="text-center mt-4">Select your test paper</h3>
 
             <div className="row">
               <div className="col-10 mx-auto">

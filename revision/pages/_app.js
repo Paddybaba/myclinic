@@ -1,12 +1,10 @@
-import "../styles/globals.css";
 import "../src/components/mycss.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Provider } from "react-redux";
 import store from "../redux/store";
-
-
+import "../styles/globals.css";
 
 // console.warn("store from app", store);
 function MyApp({ Component, pageProps }) {
