@@ -9,6 +9,9 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  user: {
+    type: String,
+  },
 });
 
 const User = mongoose.model("User", adminSchema);

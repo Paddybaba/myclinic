@@ -1,0 +1,459 @@
+.gradient-1 {
+  background-image: linear-gradient(
+    to right top,
+    #6b6b6b,
+    #848484,
+    #9e9e9e,
+    #b9b9b9,
+    #d5d5d5
+  );
+}
+
+.heading-1 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: solid #2f2f2f 1px;
+  margin-bottom: 10px;
+}
+.hospital-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 13px;
+}
+.hospital-name img {
+  height: 30px;
+  width: 30px;
+}
+.patient-data {
+  line-height: 10px;
+  font-size: 20px;
+}
+.home-link {
+  color: #2f2f2f;
+  text-decoration: none;
+  transition: 800ms;
+}
+.home-link:hover {
+  color: #5a5a5a;
+  font-weight: bold;
+}
+.sample {
+  border: 2px solid gray;
+  box-shadow: gray 5px;
+  height: 300px;
+  margin-bottom: 100px;
+}
+.sample2 {
+  border-radius: 10%;
+  background-color: royalblue;
+}
+.border-rounded {
+  border-radius: 15px;
+}
+.carousel-background {
+  width: 100%;
+  margin-left: -10%;
+  margin-right: -10%;
+  margin-top: -25%;
+  left: 0;
+  z-index: -10;
+  overflow: hidden;
+}
+/* LABELS /////////// */
+.flying-labels {
+  position: absolute;
+  top: 200px;
+  left: 4vw;
+  /* border: tomato 2px solid; */
+  height: 200px;
+  width: 90vw;
+}
+/* ADMIN LOGIN */
+.admin-title {
+  font-size: 200%;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.admin-title a {
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+}
+@media all and (min-width: 360px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+/* ADMIN DASHBOARD  */
+
+.box {
+  margin: 10px;
+  display: flex;
+  color: white;
+  border: 1px solid red;
+  text-decoration: none;
+  font-size: 3vw;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  transition: 400ms;
+}
+
+.welcome-doctor {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-size: 18px;
+  color: #2f2f2f;
+}
+.box-1 {
+  border-radius: 5px;
+  background-color: #845ec2;
+}
+
+.box-2 {
+  border-radius: 5px;
+  background-color: #4b4453;
+}
+.box-3 {
+  border-radius: 5px;
+  background-color: #b0a8b9;
+}
+.box-4 {
+  border-radius: 5px;
+  background-color: #ff8066;
+}
+/* TOP ROW /////////////////////////////////// */
+.my-links {
+  text-align: center;
+}
+.my-links a {
+  padding: 0 10px;
+  font-size: 110%;
+  text-decoration: none;
+  color: #2f2f2f;
+  border-bottom: 1px solid transparent;
+
+  transition: 500ms;
+}
+.my-links a:hover {
+  font-size: 110%;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+/* PATIENT LIST  */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+/* DOCTOR CARD ////////////////// */
+.card1 {
+  width: 240px;
+  height: 270px;
+  display: flex;
+  position: relative;
+  border: 1px solid red;
+  border-radius: 5px;
+  margin: 10px;
+  /* align-items: center;
+  flex-direction: column; */
+}
+.doc-img {
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+}
+.doc-img img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.doc-name {
+  margin-top: -10px;
+  font-size: 1em;
+  line-height: 16px;
+  font-weight: bold;
+}
+.doc-qual {
+  margin-top: -8px;
+  font-size: 0.8em;
+}
+.doc-additional {
+  margin-top: -14px;
+  font-size: 0.7em;
+  line-height: 12px;
+}
+/* ////MEDIA QUERIES  */
+@media screen and (max-width: 980px) {
+  .card1 {
+    width: 160px;
+    height: 190px;
+  }
+  .doc-name {
+    font-size: 0.8em;
+  }
+  .doc-qual {
+    font-size: 0.6em;
+  }
+  .doc-additional {
+    font-size: 0.6em;
+  }
+}
+@media screen and (max-width: 480px) {
+  .box {
+    height: 80px;
+  }
+  th,
+  td {
+    font-size: 50%;
+  }
+  .flying-labels {
+    top: 140px;
+    height: 100px;
+  }
+  .card1 {
+    font-size: 90%;
+    width: 280px;
+    height: 130px;
+    flex-direction: row;
+  }
+  .doc-img {
+    width: 45%;
+  }
+  .doc-qual {
+    font-size: 0.9em;
+  }
+}
+
+/* LABELS  /////////////// */
+.label1 {
+  font-size: 4vw;
+  text-transform: uppercase;
+  color: aliceblue;
+  font-weight: 500;
+}
+.label2 {
+  margin-left: 20%;
+  font-size: 5vw;
+  text-transform: uppercase;
+  color: aliceblue;
+  font-weight: 500;
+}
+.move-left {
+  animation: fly-left 6s ease-in-out;
+}
+.move-right {
+  animation: ease-in-out 6s fly-right;
+}
+@keyframes fly-left {
+  0% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes fly-right {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* /////////////// DOWNLAODED CSS ???????? */
+/* DOCTOR CARD 2//////// */
+.a-box {
+  display: inline-block;
+  width: 240px;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.img-container {
+  height: 230px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 0px 0px 20px 20px;
+  display: inline-block;
+  transition: all 400ms ease-in;
+}
+
+.img-container img {
+  transform: skew(0deg, -13deg);
+  height: 250px;
+  margin: -35px 0px 0px -70px;
+  transition: all 400ms ease;
+}
+
+.inner-skew {
+  display: inline-block;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0px;
+  transform: skew(0deg, 13deg);
+  font-size: 0px;
+  margin: 30px 0px 0px 0px;
+  background: #c8c2c2;
+  height: 250px;
+  width: 200px;
+  transition: all 400ms ease;
+}
+
+.text-container {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  padding: 120px 20px 20px 20px;
+  border-radius: 20px;
+  height: 250px;
+  /* background: #fff; */
+  margin: -120px 0px 0px 0px;
+  /* line-height: 19px;
+  font-size: 14px; */
+  transition: all 400ms ease;
+}
+
+.a-box h3 {
+  margin: 20px 0px 10px 0px;
+  color: black;
+  font-size: 18px;
+  transition: all 400ms ease-in;
+}
+.a-box h4 {
+  transition: all 400ms ease-in;
+  color: black;
+  font-size: 15px;
+}
+.a-box h5 {
+  transition: ease-in all 500ms;
+  color: transparent;
+  font-size: 13px;
+}
+.a-box p {
+  transition: ease-in all 500ms;
+  color: transparent;
+  font-size: 10px;
+  line-height: 11px;
+  text-align: justify;
+}
+/* for i-pad//////////// */
+@media screen and (max-width: 768px) {
+  .a-box {
+    width: 180px;
+  }
+  .img-container {
+    height: 180px;
+    width: 150px;
+  }
+  .img-container img {
+    height: 200px;
+  }
+  .text-container h3 {
+    font-size: 15px;
+  }
+  .text-container {
+    font-size: 12px;
+  }
+}
+/* ///// HOVER EFFECTS DOCCARD2 ///////// */
+.a-box:hover > .img-container {
+  transform: scale(0.5) translateY(-50px);
+}
+.a-box:hover > .text-container {
+  background-color: rgb(64, 75, 224);
+  height: 250px;
+}
+.a-box:hover > .text-container h3 {
+  color: white;
+  transform: translateY(-100px);
+  text-decoration: underline;
+}
+.a-box:hover > .text-container h4 {
+  color: white;
+  transform: translateY(-100px);
+}
+.a-box:hover > .text-container h5 {
+  color: white;
+  transform: translateY(-100px);
+}
+.a-box:hover > .text-container p {
+  color: white;
+  transform: translateY(-100px);
+  font-size: 10px;
+  font-style: italic;
+}
+
+/* ///////DOCCARD2 Hover effects for ipad /////// */
+@media (max-width: 768px) {
+  .a-box:hover > .img-container {
+    transform: scale(0.5) translateY(-60px);
+  }
+  .a-box:hover > .text-container {
+    background-color: rgb(253, 46, 143);
+    height: 250px;
+  }
+  .a-box:hover > .text-container h3 {
+    color: white;
+    transform: translateY(-90px);
+    text-decoration: underline;
+  }
+  .a-box:hover > .text-container h4 {
+    color: white;
+    transform: translateY(-90px);
+    font-size: 80%;
+  }
+  .a-box:hover > .text-container h5 {
+    color: white;
+    transform: translateY(-90px);
+    font-size: 80%;
+  }
+  .a-box:hover > .text-container p {
+    color: white;
+    transform: translateY(-90px);
+    font-size: 8px;
+    font-style: italic;
+  }
+}
+/* ///////////////======CONTACT=====//////////////////////////// */
+.curved-image {
+  background-image: url("https://www.healthcareitnews.com/sites/hitn/files/Hospital-HITN.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 290px;
+  display: flex;
+  align-items: flex-end;
+}
+.map-container {
+  border: 2px solid rgb(224, 224, 224);
+  box-shadow: gray 5px;
+  height: 300px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "../components/components.css";
+import "../components/cssFiles/components.css";
 const Receipt = ({ patientData }) => {
   const {
     patient_name,
@@ -43,6 +43,7 @@ const Receipt = ({ patientData }) => {
         <p>Address :{patient_address}</p>
         <p>Phone : {patient_phone}</p>
         <p>Fees : {patient_fee}</p>
+        <p>Visit : {patient_visit}</p>
       </div>
     </div>
   );
