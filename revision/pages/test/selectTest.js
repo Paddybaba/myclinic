@@ -4,15 +4,22 @@ import { selectOptions, setQuestions } from "../../redux/actions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
+import { Hint } from "react-autocomplete-hint";
 import axios from "axios";
 
 const selectTest = (props) => {
   // console.log("select page props", props);
+  const [authorHint, setAuthorHint] = useState([]);
   const [mystudent, setStudent] = useState(props.student.user.student);
   const [subject, setSubject] = useState("Science");
   const [author, setAuthor] = useState("");
   const [year, setYear] = useState("");
 
+  useEffect(async () => {
+    const response = await axios.post("http://localhost:8080/getauthors");
+    const authors = await response.data;
+    setAuthorHint(authors);
+  }, []);
   function validateForm() {
     return subject.length > 0 && author.length > 0 && year > 0;
   }
@@ -65,13 +72,23 @@ const selectTest = (props) => {
                       <option value="English">English</option>
                     </select>
                   </Form.Group>
-                  <Form.Group className="mt-4" size="lg" controlId="author">
+                  {/* <Form.Group className="mt-4" size="lg" controlId="author">
                     <Form.Label>Author</Form.Label>
                     <Form.Control
                       type="text"
                       value={author}
                       onChange={(e) => setAuthor(e.target.value)}
                     />
+                  </Form.Group> */}
+                  <Form.Group className="mt-4" size="lg" controlId="author">
+                    <Form.Label>Author</Form.Label>
+                    <Hint options={authorHint} allowTabFill>
+                      <input
+                        className="form-control"
+                        value={author}
+                        onChange={(e) => setAuthor(e.target.value)}
+                      />
+                    </Hint>
                   </Form.Group>
                   <Form.Group className="mt-4" size="lg" controlId="year">
                     <Form.Label>Year</Form.Label>
@@ -96,7 +113,7 @@ const selectTest = (props) => {
                   // type="submit" (This is not allowing action to work properly)
                   onClick={() => router.push("/login/loginPage")}
                 >
-                  Back
+                  Log Out
                 </Button>
               </div>
             </div>
